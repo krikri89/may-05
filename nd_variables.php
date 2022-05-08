@@ -128,3 +128,48 @@ echo "<font color='black'>-----------8th-------";
 echo BR;
 
 // Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000 EUR - 4 % nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.
+$candlesNb = rand(5, 3000);
+$candlesWith3Discount=$candlesNb-($candlesNb*0.03);
+$candlesWith4Discount=$candlesNb-($candlesNb*0.04);
+if ($candlesNb>=1000 && $candlesNb <2000)
+echo "Nupirkos $candlesNb zvakes uz $candlesWith3Discount EUR";
+elseif ($candlesNb >=2000)
+echo"Nupirkos $candlesNb zvakes uz $candlesWith4Discount EUR";
+else echo "Nupirkos $candlesNb zvakes uz $candlesNb EUR";
+
+echo BR;
+echo '-----------9th-------';
+echo BR;
+// Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, kurios yra mažesnės nei 10 arba didesnės nei 90. Abu vidurkius atspausdinkite. Rezultatus apvalinkite iki sveiko skaičiaus.
+$number1 = rand(0, 100);
+$number2 = rand(0, 100);
+$number3 = rand(0, 100);
+$number4 = rand(10, 90);
+$number5 = rand(10, 90);
+$number6 = rand(10, 90);
+
+$numberMean1 = ($number1+$number2+$number3)/3;
+$numberMean2 = ($number4+$number5+$number6)/3;
+
+// if ($number1 >10 && $number2 >10 && $number3 >10 && $number1 <90 && $number2 <90 && $number3 <90 )
+echo round($numberMean1);
+echo BR;
+echo round($numberMean2);
+
+echo BR;
+echo '-----------10th-------';
+echo BR;
+// Padarykite skaitmeninį laikrodį, rodantį valandas, minutes ir sekundes. Valandom, minutėm ir sekundėm sugeneruoti panaudokite funkciją rand(). Sugeneruokite skaičių nuo 0 iki 300. Tai papildomos sekundės. Skaičių pridėkite prie jau sugeneruoto laiko. Atspausdinkite laikrodį prieš ir po sekundžių pridėjimo ir pridedamų sekundžių skaičių.
+$hours=rand(1, 24);
+$minutes=rand(1, 59);
+$seconds=rand(1,59);
+$extraS=rand(0,300);
+$clock = $hours + $minutes + $seconds+$extraS;
+echo $clock;
+if ($seconds+$extraS>60);
+
+echo BR;
+echo '-----------11th-------';
+echo BR;
+// Papildomas.
+// Naudokite funkcija rand(). Sugeneruokite 6 kintamuosius su atsitiktinem reikšmėm nuo 1000 iki 9999. Atspausdinkite reikšmes viename strige, išrūšiuotas nuo didžiausios iki mažiausios, atskirtas tarpais. Naudoti ciklų ir masyvų NEGALIMA.
