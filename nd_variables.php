@@ -98,8 +98,33 @@ echo BR;
 echo '------';
 // echo (preg_match_all("$random_Number1 $random_Number2 $random_Number3 $random_Number4",0));
 $str = "$random_Number1 $random_Number2 $random_Number3 $random_Number4";
-$pattern = "/0/"; echo BR;
-echo preg_match_all($pattern, $str);
+$pattern = "/0/i"; echo BR;
+$pattern2 = "/1/i";
+$pattern3 = "/2/i";
+echo preg_match_all($pattern, $str); echo BR;
+echo preg_match_all($pattern2, $str); echo BR;
+echo preg_match_all($pattern3,$str); 
 echo BR;
 echo '-----------6th-------';
 echo BR;
+// Naudokite funkcija rand(). Sugeneruokite atsitiktinį skaičių nuo 1 iki 6 ir jį atspausdinkite atitinkame h tage. Pvz skaičius 3- rezultatas: <h3>3</h3>
+$d = rand(1, 6);
+echo "<h$d>$d</h$d>";
+
+echo BR;
+echo '-----------7th-------';
+echo BR;
+// Naudokite funkcija rand(). Atspausdinkite 3 skaičius nuo -10 iki 10. Skaičiai mažesni už 0 turi būti žali, 0 - raudonas, didesni už 0 mėlyni.
+
+$colorNb = rand(-10, 10);
+if ($colorNb < 0)
+echo "<font color= 'green'>$colorNb";
+elseif ($colorNb==0)
+echo "<font color='red'>$colorNb";
+else echo "<font color='blue'>$colorNb";
+
+echo BR;
+echo "<font color='black'>-----------8th-------";
+echo BR;
+
+// Įmonė parduoda žvakes po 1 EUR. Perkant daugiau kaip už 1000 EUR taikoma 3 % nuolaida, daugiau kaip už 2000 EUR - 4 % nuolaida. Parašykite programą, kuri skaičiuos žvakių kainą ir atspausdintų atsakymą kiek žvakių ir kokia kaina perkama. Žvakių kiekį generuokite ​rand()​ funkcija nuo 5 iki 3000.
