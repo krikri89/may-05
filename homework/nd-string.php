@@ -21,7 +21,56 @@ echo '-----3rd--------';
 echo '<br>';
 // Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš pirmų vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
 
-$name3 = 'John';
-$surname4 = 'Johnson';
+// $name3 = 'John';
+// $surname4 = 'Johnson';
 
-echo atrchr($name3, $surname4);
+// echo atrchr($name3, $surname4);
+
+echo '-----4th--------';
+echo '<br>';
+// Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš trijų paskutinių vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
+
+
+
+echo '<br>';
+echo '-----5th--------';
+echo '<br>';
+// Sukurti kintamąjį su stringu: “An American in Paris”. Jame visas “a” (didžiąsias ir mažąsias) pakeisti žvaigždutėm “*”.  Rezultatą atspausdinti.
+
+echo str_ireplace('a', '*', 'An American in Paris');
+
+echo '<br>';
+echo '-----6th--------';
+echo '<br>';
+// Sukurti kintamąjį su stringu: “An American in Paris”. Suskaičiuoti visas “a” (didžiąsias ir mažąsias) raides. Rezultatą atspausdinti.
+
+echo substr_count('An American in Paris','a');
+
+echo '<br>';
+echo '-----7th--------';
+echo '<br>';
+// Sukurti kintamąjį su stringu: “An American in Paris”. Jame ištrinti visas balses. Rezultatą atspausdinti. Kodą pakartoti su stringais: “Breakfast at Tiffany's”, “2001: A Space Odyssey” ir “It's a Wonderful Life”.
+
+$arr=array('a','e','i','o','u','y');
+$newArr=str_replace($arr,'', 'An American in Paris');
+echo "$newArr, <br>";
+$newArr2=str_replace($arr,'', 'Breakfast at Tiffany s');
+echo "$newArr2, <br>";
+$newArr3=str_replace($arr,'', '2001: A Space Odyssey');
+echo "$newArr3, <br>";
+$newArr4=str_replace($arr,'', 'It s a Wonderful Life');
+echo "$newArr4, <br>";
+
+echo '<br>';
+echo '-----8th--------';
+echo '<br>';
+// Stringe, kurį generuoja toks kodas: 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope'; Surasti ir atspausdinti epizodo numerį.
+
+
+echo '<br>';
+echo '-----9th--------';
+echo '<br>';
+// Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood” yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale”.
+$countWords= 'Don t Be a Menace to South Central While Drinking Your Juice in the Hood';
+if (strlen('string') <=5)
+echo str_word_count($countWords);

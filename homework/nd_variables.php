@@ -72,19 +72,12 @@ echo BR;
 echo '-------------';
 echo BR;
 if ($a == $b && $b == $c && $a == $c)
-echo "Triangle is Equilateral";
-elseif ($a+$b>$c)
+echo "lygiakrastis trikampis";
+elseif ($a+$b>$c || $b+$c>$a || $a+$c>$b )
 echo 'Trikampis galimas';
-elseif (hypot($a, $b)==($c*$C))
-echo 'Statusis trikampis';
 else echo 'trikampis negalimas';
 echo BR;
-// elseif ($c*$c)==(($a*$a)+($b*$b))
-// echo 'Statusis trikampis';
-// plotas bet kurio trikampio
-// $s =($a+$b+$c)/2;
-// $s1 =sqrt($s*(($s-$a)*($s-$b)*($s-$c)));
-// echo "$s1";
+
 
 echo BR;
 echo '-----------5th-------';
