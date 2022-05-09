@@ -26,12 +26,13 @@ echo BR;
 $random2 = rand(0, 4);
 echo $random2;
 echo BR;
-
+echo '-----------',BR;
 if ($random1 >= $random2 && $random2 > 0){
     echo (round($random1/$random2));
-} else {
+} elseif ($random1 < $random2 && $random1 >0){
     echo (round($random2/$random1));
-};
+} else echo 'dalyba is nulio negalima';
+
 echo BR;
 echo '----------3rd-----------';
 echo BR;
@@ -144,29 +145,34 @@ echo BR;
 $number1 = rand(0, 100);
 $number2 = rand(0, 100);
 $number3 = rand(0, 100);
-$number4 = rand(10, 90);
-$number5 = rand(10, 90);
-$number6 = rand(10, 90);
 
 $numberMean1 = ($number1+$number2+$number3)/3;
-$numberMean2 = ($number4+$number5+$number6)/3;
 
-// if ($number1 >10 && $number2 >10 && $number3 >10 && $number1 <90 && $number2 <90 && $number3 <90 )
-echo round($numberMean1);
+
+if ($number1 >10 && $number2 >10 && $number3 >10 
+&& $number1 <90 && $number2 <90 && $number3 <90 )
+echo round(($number1+$number2+$number3)/3);
 echo BR;
-echo round($numberMean2);
+echo round($numberMean1);
 
 echo BR;
 echo '-----------10th-------';
 echo BR;
 // Padarykite skaitmeninį laikrodį, rodantį valandas, minutes ir sekundes. Valandom, minutėm ir sekundėm sugeneruoti panaudokite funkciją rand(). Sugeneruokite skaičių nuo 0 iki 300. Tai papildomos sekundės. Skaičių pridėkite prie jau sugeneruoto laiko. Atspausdinkite laikrodį prieš ir po sekundžių pridėjimo ir pridedamų sekundžių skaičių.
-$hours=rand(1, 24);
-$minutes=rand(1, 59);
-$seconds=rand(1,59);
+$hours=rand(0, 24)*3600;
+$minutes=rand(0, 59)*60;
+$seconds=rand(0,59);
 $extraS=rand(0,300);
-$clock = $hours + $minutes + $seconds+$extraS;
-echo $clock;
-if ($seconds+$extraS>60);
+$totalSeconds = $hours + $minutes + $seconds+$extraS;
+// echo $totalSeconds; echo BR;
+$totalHours = floor($totalSeconds/3600);
+// echo $totalHours; echo BR;
+$totalMin = floor(($totalSeconds-($totalHours*3600))/60);
+// echo $totalMin; echo BR;
+$leftSeconds = ($totalSeconds-($totalHours*3600))-$totalMin*60;
+// echo $leftSeconds;
+echo "$totalHours H $totalMin Min $leftSeconds s";
+
 
 echo BR;
 echo '-----------11th-------';
