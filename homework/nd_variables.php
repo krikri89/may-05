@@ -96,7 +96,6 @@ $random_Number4 = rand(0, 2);
 echo "$random_Number1 $random_Number2 $random_Number3 $random_Number4";
 echo BR;
 echo '------';
-// echo (preg_match_all("$random_Number1 $random_Number2 $random_Number3 $random_Number4",0));
 $str = "$random_Number1 $random_Number2 $random_Number3 $random_Number4";
 $pattern = "/0/i"; echo BR;
 $pattern2 = "/1/i";
@@ -104,6 +103,7 @@ $pattern3 = "/2/i";
 echo preg_match_all($pattern, $str); echo BR;
 echo preg_match_all($pattern2, $str); echo BR;
 echo preg_match_all($pattern3,$str); 
+
 echo BR;
 echo '-----------6th-------';
 echo BR;
