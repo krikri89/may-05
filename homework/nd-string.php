@@ -74,3 +74,14 @@ echo '<br>';
 $countWords= 'Don t Be a Menace to South Central While Drinking Your Juice in the Hood';
 if (strlen('string') <=5)
 echo str_word_count($countWords);
+
+echo '<br>';
+echo '-----10th--------';
+echo '<br>';
+// Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.
+echo substr(str_shuffle(str_repeat('abcdefgjklmnopqrstuvwxyz', 3)), 0, 3);
+
+echo '<br>';
+echo '-----11th--------';
+echo '<br>';
+// Parašykite kodą, kuris generuotų atsitiktinį stringą su 10 atsitiktine tvarka išdėliotų žodžių, o žodžius generavimui imtų iš 9-me uždavinyje pateiktų dviejų stringų. Žodžiai neturi kartotis. (reikės masyvo)
