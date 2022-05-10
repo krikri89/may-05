@@ -26,12 +26,13 @@ $surname4 = 'Johnson';
 
 echo($name3[0]. $surname4[0]);
 
+echo '<br>';
 echo '-----4th--------';
 echo '<br>';
 // Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš trijų paskutinių vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
 
-echo (substr($name3,-3));
-
+echo (substr($name3,-3)),'<br>';
+echo (substr($surname4, -3));
 
 echo '<br>';
 echo '-----5th--------';
@@ -82,13 +83,21 @@ echo '<br>';
 
 $countWords= 'Don\'t Be a Menace to South Central While Drinking Your Juice in the Hood';
 $wordSplit= preg_split("/[\s,]+/m",$countWords);
-print_r ($wordSplit);
 for ($i=0; $i<count($wordSplit); $i++){
     if((strlen($wordSplit[$i]))<=5){
         echo ' '.$wordSplit[$i]. ' ';
     }
     
-}    ;
+};
+echo '<br>';
+$countWords2= 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+$wordSplit2= preg_split("/[\s,]+/m",$countWords2);
+for ($i=0; $i<count($wordSplit2); $i++){
+    if((mb_strlen($wordSplit2[$i]))<=5){
+        echo ' '.$wordSplit2[$i]. ' ';
+    }
+    
+};
 
 // echo str_word_count($countWords);
 
@@ -96,8 +105,8 @@ echo '<br>';
 echo '-----10th--------';
 echo '<br>';
 // Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.
-range('a', 'z');
-echo substr(str_shuffle(str_repeat('abcdefgjklmnopqrstuvwxyz', 3)), 0, 3);
+$randomLetters = range('a', 'z');
+echo substr(str_shuffle(str_repeat('$randomLetters', 3)), 0, 3);
 
 echo '<br>';
 echo '-----11th--------';
