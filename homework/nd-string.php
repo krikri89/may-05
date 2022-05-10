@@ -30,6 +30,8 @@ echo '-----4th--------';
 echo '<br>';
 // Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš trijų paskutinių vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
 
+// $name4 = 'John';
+// $surname5 = 'Johnson';
 
 
 echo '<br>';
@@ -79,9 +81,21 @@ echo '<br>';
 echo '-----10th--------';
 echo '<br>';
 // Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių. Stringo ilgis 3 simboliai.
+range('a', 'z');
 echo substr(str_shuffle(str_repeat('abcdefgjklmnopqrstuvwxyz', 3)), 0, 3);
 
 echo '<br>';
 echo '-----11th--------';
 echo '<br>';
 // Parašykite kodą, kuris generuotų atsitiktinį stringą su 10 atsitiktine tvarka išdėliotų žodžių, o žodžius generavimui imtų iš 9-me uždavinyje pateiktų dviejų stringų. Žodžiai neturi kartotis. (reikės masyvo)
+
+$first='Don\' t Be a Menace to South Central While Drinking Your Juice in the Hood';
+$second='Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+
+$arr4 = explode(' ', $first.' '.$second);
+shuffle($arr4);
+array_splice($arr4,0, 10);
+$masyvas =(array_splice($arr4,0, 10));
+
+$ats = implode('', $masyvas);
+print_r($ats);
