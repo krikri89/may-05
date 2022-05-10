@@ -21,17 +21,16 @@ echo '-----3rd--------';
 echo '<br>';
 // Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš pirmų vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
 
-// $name3 = 'John';
-// $surname4 = 'Johnson';
+$name3 = 'John';
+$surname4 = 'Johnson';
 
-// echo atrchr($name3, $surname4);
+echo($name3[0]. $surname4[0]);
 
 echo '-----4th--------';
 echo '<br>';
 // Sukurti du kintamuosius. Jiems priskirti savo mylimo aktoriaus vardą ir pavardę kaip stringus. Sukurti trečią kintamąjį ir jam priskirti stringą, sudarytą iš trijų paskutinių vardo ir pavardės kintamųjų raidžių. Jį atspausdinti.
 
-// $name4 = 'John';
-// $surname5 = 'Johnson';
+echo (substr($name3,-3));
 
 
 echo '<br>';
@@ -68,14 +67,30 @@ echo '-----8th--------';
 echo '<br>';
 // Stringe, kurį generuoja toks kodas: 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope'; Surasti ir atspausdinti epizodo numerį.
 
-
+echo $starWars = 'Star Wars: Episode '.str_repeat(' ', rand(0,5)). rand(1,9) . ' - A New Hope';
+$number = '';
+for ($i=0; $i < strlen($starWars);$i++) {
+    if (is_numeric($starWars[$i])){
+        $number.=$starWars[$i];
+    }
+}
+echo "Epizodo numeris yra $number", '<br>'; 
 echo '<br>';
 echo '-----9th--------';
 echo '<br>';
 // Suskaičiuoti kiek stringe “Don't Be a Menace to South Central While Drinking Your Juice in the Hood” yra žodžių trumpesnių arba lygių nei 5 raidės. Pakartokite kodą su stringu “Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale”.
-$countWords= 'Don t Be a Menace to South Central While Drinking Your Juice in the Hood';
-if (strlen('string') <=5)
-echo str_word_count($countWords);
+
+$countWords= 'Don\'t Be a Menace to South Central While Drinking Your Juice in the Hood';
+$wordSplit= preg_split("/[\s,]+/m",$countWords);
+print_r ($wordSplit);
+for ($i=0; $i<count($wordSplit); $i++){
+    if((strlen($wordSplit[$i]))<=5){
+        echo ' '.$wordSplit[$i]. ' ';
+    }
+    
+}    ;
+
+// echo str_word_count($countWords);
 
 echo '<br>';
 echo '-----10th--------';
