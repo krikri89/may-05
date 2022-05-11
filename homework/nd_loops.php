@@ -44,16 +44,21 @@ print_r ($line2);
 echo '<br>';
 // <!-- Sugeneruokit 300 atsitiktinių skaičių nuo 0 iki 300, atspausdinkite juos atskirtus tarpais ir suskaičiuokite kiek tarp jų yra didesnių už 150.  Skaičiai didesni nei 275 turi būti raudonos spalvos. -->
 echo '<br>----------------2------<br>';
+$numbers=array();
+function rand_num_generator(){
+    return rand (0, 300);
+}
 
-for($i=0; $i <300; $i++){
-    echo ' '.(rand(0, 300)).' ';
-    // if([$i]>150){
-    //     echo ((substr_count[$i]));
-    // }
-
-    if ([$i]>275){
-        echo '<span style="color:red">'. $i. '</span>';
+for($i=0; $i<300; $i++){
+$number[$i] = rand_num_generator();
+echo ' ' . $number[$i]. ' ';
+    if([$i]>150){
+       echo array_count_values($number);
     }
+
+    // if (array_values[$i]>275){
+    //     echo '<span style="color:red">'. $i. '</span>';
+    // }
 }
 
 echo '<br>';
@@ -114,6 +119,15 @@ echo '<br>';
 
 // <!-- Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą (https://lt.wikipedia.org/wiki/Rombas), kurio aukštis 21 eilutė. Reikia padaryti, kad kiekviena rombo žvaigždutė būtų atsitiktinės RGB spalvos (perkrovus puslapį spalvos turi keistis). -->
 echo '<br>----------------8------<br>';
+$num = 7;
+for ($i=1; $i<=$num; $i++){
+    for ($k=1; ($num - $i); $k++){
+        echo ' ';
+    }
+    for ($f= 1; $f<=$i; $f++){
+        echo "*";;
+    }echo '<br>';
+}
 echo '<br>';
 
 // <!-- Sumodeliuokite vinies kalimą. Įkalimo gylį sumodeliuokite pasinaudodami rand() funkcija. Vinies ilgis 8.5cm (pilnai sulenda į lentą).
