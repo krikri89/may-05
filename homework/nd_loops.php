@@ -44,22 +44,21 @@ print_r ($line2);
 echo '<br>';
 // <!-- Sugeneruokit 300 atsitiktinių skaičių nuo 0 iki 300, atspausdinkite juos atskirtus tarpais ir suskaičiuokite kiek tarp jų yra didesnių už 150.  Skaičiai didesni nei 275 turi būti raudonos spalvos. -->
 echo '<br>----------------2------<br>';
-$numbers=array();
-function rand_num_generator(){
-    return rand (0, 300);
-}
 
 for($i=0; $i<300; $i++){
-$number[$i] = rand_num_generator();
-echo ' ' . $number[$i]. ' ';
-    if([$i]>150){
-       echo array_count_values($number);
-    }
+$numbers[] = rand(0, 300);
+echo ' ' . $numbers[$i]. ' ';
+}   
+echo'<br>--<br>';
 
-    // if (array_values[$i]>275){
-    //     echo '<span style="color:red">'. $i. '</span>';
-    // }
-}
+// if($i>150){
+//     echo count($numbers);
+// }
+// echo'<br>--<br>';
+
+//     if ($i>275){
+//         echo '<span style="color:red">'. $i. '</span>';
+//     }
 
 echo '<br>';
 
@@ -83,10 +82,13 @@ echo '<br>';
 // * * * * * * * * * * *
 // * * * * * * * * * * * -->
 echo '<br>----------------4------<br>';
-$stars = '*';
-for ($b=0; $b<100; $b++){
-    
-    echo '<span style=" color:green">'. $stars. '</span>';
+$stars = '15';
+for ($i=1; $i<$stars; $i++){
+    for($j=1; $j<(2*$stars)-1; $j++){
+        echo "*";
+    }
+    echo '<br>';
+    // echo '<span style=" color:green">'. $stars. '</span>';
 }
 echo '<br>';
 
@@ -114,19 +116,44 @@ echo '<br>';
 
 // <!-- Kazys ir Petras žaidžiai Bingo. Petras surenka taškų kiekį nuo 10 iki 20, Kazys surenka taškų kiekį nuo 5 iki 25. Vienoje eilutėje išvesti žaidėjų vardus su taškų kiekiu ir “Partiją laimėjo: ​laimėtojo vardas​”. Taškų kiekį generuokite funkcija ​rand()​. Žaidimą laimi tas, kas greičiau surenka 222 taškus. Partijas kartoti tol, kol kažkuris žaidėjas pirmas surenka 222 arba daugiau taškų. Nenaudoti cikle break. -->
 echo '<br>----------------7------<br>';
+$win =0;
+$times=0;
+do {
+    $kazys = rand(5, 25);
+    $petras = rand(10, 20);
+// $win++;
+$win+=$kazys;
+$win+=$petras;
+
+}while($win<222);
+echo $kazys;
+echo '-----';
+echo $petras;
+// echo $win;
 
 echo '<br>';
 
 // <!-- Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą (https://lt.wikipedia.org/wiki/Rombas), kurio aukštis 21 eilutė. Reikia padaryti, kad kiekviena rombo žvaigždutė būtų atsitiktinės RGB spalvos (perkrovus puslapį spalvos turi keistis). -->
 echo '<br>----------------8------<br>';
-$num = 7;
-for ($i=1; $i<=$num; $i++){
-    for ($k=1; ($num - $i); $k++){
-        echo ' ';
+$n = 7;
+for ($i=1; $i<=$n; $i++){
+    for ($j=1; $j<=(2*$n)-1; $j++){
+        if ($j>=$n-($i-1) && $j<=$n +($i-1)){
+        echo '*';
+    } else {
+        echo "&nbsp; &nbsp;";
     }
-    for ($f= 1; $f<=$i; $f++){
-        echo "*";;
-    }echo '<br>';
+} echo '</br>';
+}
+    for ($i=$n-1;$i>=1; $i--){
+        for($j=1; $j<=(2*$n)-1; $j++){
+            if($j>=$n-($i-1) && $j<=$n+($i-1)){
+                echo '*';
+            }else{
+                echo "&nbsp; &nbsp;";
+            }
+        }
+    echo '<br>';
 }
 echo '<br>';
 
