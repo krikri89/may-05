@@ -2,29 +2,32 @@
 const br ='<br>';
 // Sugeneruokite masyvą iš 10 elementų, kurio elementai būtų masyvai iš 5 elementų su reikšmėmis nuo 5 iki 25.
 echo br.'--------------------1--'.br;
-$arr = [
-    [5, 25, 12, 10, 11],
-    [2, 24, 19, 6, 12],
-    [4, 23, 20, 7, 13],
-    [3, 22, 18, 8, 14],
-    [1, 21, 17, 9, 15],
-    [5, 25, 12, 10, 11],
-    [2, 24, 19, 6, 12],
-    [4, 23, 20, 7, 13],
-    [3, 22, 18, 8, 14],
-    [1, 21, 17, 9, 15],
-];
-print_r($arr);
-echo sizeof($arr);
-echo count($arr);
+$arr = [];
+foreach (range(1,10) as $element){
+    $row = [];
+    foreach (range(1,5) as $column){
+        $row[] = rand(5,25);
+    }
+    $arr[]=$row;
+}
+
 
 echo br.'--------------------2-a)--'.br;
 // Suskaičiuokite kiek masyve yra elementų didesnių už 10;
-foreach ($arr as $key=>$value){
-    if ($value>10) {
-        echo count($value), br;
+$count = 0;
+$max = 0;
+$var = [];
+
+foreach ($arr as $num){
+    foreach ($num as $key =>$n){
+        if (10 < $n){
+            $count++;
+        }
+        if ($max < $n){
+            $max =$n;
+        }
     }
-};
+}
 
 
 echo br.'--------------------2-b)--'.br;

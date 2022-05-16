@@ -2,13 +2,11 @@
 const br ='<br>';
 echo br.'----------------1----'.br;
 // Sugeneruokite masyvą iš 30 elementų (indeksai nuo 0 iki 29), kurių reikšmės yra atsitiktiniai skaičiai nuo 5 iki 25.
-$randomArr= range(5, 25);
-shuffle($randomArr);
-$allRandomArr=array_slice($randomArr, 0, 30);
-print_r($allRandomArr);
 
-// $arr = [5, 12, 11, 23, 14, 23, 5, 8, 9, 11, 5, 12, 11, 23, 14, 23, 5, 8, 9, 11, 5, 12, 11, 23, 14, 23, 5, 8, 9, 11];
-// print_r($arr);
+
+
+
+
 echo br.'----------------2:a)----'.br;
 // // Suskaičiuokite kiek masyve yra reikšmių didesnių už 10;
 
@@ -19,8 +17,8 @@ echo br.'----------------2:a)----'.br;
 //     }
 // };
 
-$vla = count($randomArr);
-print_r($vla);
+// $vla = count($randomArr);
+// print_r($vla);
 echo br.'----------------2:b)----'.br;
 // Raskite didžiausią masyvo reikšmę ir jos indeksą arba indeksus jeigu yra keli;
 

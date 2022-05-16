@@ -47,3 +47,53 @@ $bevardo =function(){
 };
 
 $bevardo();
+
+echo br.'----------------------'.br;
+function zuikis(){
+    return fn()=>123;
+}
+echo '<br>';
+echo zuikis()();
+echo br.'----------------------'.br;
+function recursive ($num){
+    echo 'IN'. $num, '<br>';
+    if($num <3){
+        //kvieciame save. Padidiname numeri vientu.
+        return recursive($num+1);
+    }
+    echo 'OUT' . $num, '<br>'; 
+}
+$startNum =1;
+recursive($startNum);
+echo br.'----------------------'.br;
+
+function arraySum($masyvas){
+    $sume =0;
+    foreach($masyvas as $value){}
+    if (!is_array($value)){
+        $suma +=$value;
+    }
+    else{
+        arraySum($value);
+    }
+    return $suma;
+}
+// echo arraySum($rm);
+echo br.'----------------------'.br;
+$masyvas2=[
+    ['a','d'],
+    ['v','e'],
+    ['a','c'],
+    ['s','r'],
+];
+usort($masyvas2, function($a, $b){
+    return $a[1] <=> $b[1];
+});
+// usort($masyvas2, fn($a, $b =>$b[1]<=>$a[1]));
+// print_r
+
+$_result=9;
+$one = function ()use($_result){
+    var_dump($_result);
+};
+$_result++;
