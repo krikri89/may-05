@@ -152,10 +152,36 @@ print_r($secondArray);
 
 echo br.'----------------7----'.br;
 // Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
+$arr=[];
+for ($i=0; $i< count($firstArray); $i++){
+    if (!in_array($firstArray[$i], $secondArray)){
+        $arr[]=$firstArray[$i];
+    }
+}
+print_r($arr);
+
 echo br.'----------------8----'.br;
 // Sugeneruokite masyvą iš elementų, kurie kartojasi abiejuose 6 uždavinio masyvuose.
+$repeatArr=[];
+for ($i=0; $i < count ($firstArray); $i++){
+    if (in_array($firstArray[$i], $firstArray)){
+        $repeatArr[]=$firstArray[$i];
+    }
+}
+print_r($repeatArr);
 echo br.'----------------9----'.br;
 // Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo.
+$repeatArr2=array_flip($firstArray);
+print_r($repeatArr2);
+$total3=0;
+foreach($repeatArr2 as $value){
+    $value = $secondArray[$total3];
+    $total3++;
+}
+unset($value);
+print_r($repeatArr2);
+
+
 echo br.'----------------10----'.br;
 // Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
 echo br.'----------------11----'.br;
