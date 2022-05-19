@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.kvc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.kv {
+  width: 70px;
+  height: 70px;
+  background-color: turquoise;
+  margin: 7px;
+  border-radius: 5px;
+}
