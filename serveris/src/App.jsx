@@ -10,10 +10,10 @@ import './App.css';
 // import Keturi from './Components/homework/05';
 import randColor from './Functions/randColors';
 
-const cats = ['Pilkis', 'Murkis', 'rainis'];
 function App() {
   const [spalva, setSpalva] = useState('blue');
   const [number, setNumber] = useState(1);
+  const cats = ['Pilkis', 'Murkis', 'rainis'];
   const [kv, setKv] = useState([]);
 
   const stebuklas = (a) => {
@@ -24,7 +24,7 @@ function App() {
   const kitasStebuklas = () => {
     console.log(' stebuklu stebuklas');
     setSpalva((oldColor) => (oldColor === 'yellow' ? 'blue' : 'yellow'));
-    // setSpalva('yellow');
+    setSpalva('yellow');
   };
 
   const skaicius = () => {
@@ -32,27 +32,32 @@ function App() {
   };
 
   const addKv = () => setKv((kvM) => [...kvM, randColor()]);
-  const REMkv = () => setKv((kvM) => kvM.slice(-1));
+  const REMkv = () => setKv((kvM) => kvM.slice(1));
+
   return (
     <div className="App">
       <header className="App-header">
         <h1 style={{ color: spalva }}>State</h1>
-        <div className="kvc">
-          {kv.map((c, i) => (
-            <div key={i} className="kv" style={{ background: c }}></div>
-          ))}
-        </div>
         <button onClick={() => stebuklas('Abra-cadabra')}>Press with!</button>
         <button onClick={kitasStebuklas}>Press W/O</button>
+        {
+          <div className="kvc">
+            {kv.map((c, i) => (
+              <div key={i} className="kv" style={{ background: c }}></div>
+            ))}
+          </div>
+        }
+        <div className="cssround">round or not</div>
+        <button onClick={addKv}>-- press---</button>
+        <button onClick={REMkv}>-- remove---</button>
         <button onClick={skaicius}>{number}</button>
         {cats.map((cat, i) => (
           <div key={i}>{cat}</div>
         ))}
-        <button onClick={addKv}>-- press---</button>
-        <button onClick={REMkv}>-- remove---</button>
-        {/* <Hello spalva="pink" size="14" skaicius={3}></Hello> */}
-        {/* <Briedis></Briedis> */}
-        {/* <Zuikis />
+
+        {/* <Hello spalva="pink" size="14" skaicius={3}></Hello>
+        <Briedis></Briedis>
+        <Zuikis />
         <Mike text="bla" size="45" />
         <Zebrai prop={2} />
         <Barsukai bold="Barsukai miega ziema" thin="Barsukai nemegsta sesku" />
