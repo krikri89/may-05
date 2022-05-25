@@ -3,6 +3,8 @@ import { useState } from 'react';
 import randomNumber from './Component/function/function';
 import './App.css';
 
+// Sukurti aplikaciją, kuri turi mygtukus change ir random bei atvaizduoja apskritimą su random skaičiumi viduje. Paspaudus change mygtuką apskritimas keičiasi į stačiakampį kaip pirmame uždavinyje, o paspaudus random mygtuką, skaičius pasikeičia į rand 5 - 25
+
 function App() {
   const [round, setRound] = useState('round');
   const [number, setNumber] = useState([]);
