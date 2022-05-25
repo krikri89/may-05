@@ -37,8 +37,7 @@ function App() {
         
         <div className="newClassContainer">
           {kv.map((kazkas, c) => (
-            <div key={c} className="newClass" 
-            style={{ background: kazkas }}>
+            <div key={c} className="newClass"  style={{ background: kazkas }}>
               {c}</div>))}
 
               
