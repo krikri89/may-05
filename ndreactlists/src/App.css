@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+.dogcage {
+  width: 100px;
+  height: 40px;
+  border: 2px solid green;
+}
+.dogcircle {
+  /* width: 100; */
+  height: 40px;
+  padding: 5px;
+  border: 2px solid blue;
+  border-radius: 50%;
+}
+.dogin {
+  width: 100px;
+  height: 40px;
+  border: 2px solid yellow;
+}
