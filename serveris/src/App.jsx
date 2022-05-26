@@ -11,25 +11,25 @@ import './App.css';
 import randColor from './Functions/randColors';
 
 function App() {
-  const [spalva, setSpalva] = useState('blue');
-  const [number, setNumber] = useState(1);
-  const cats = ['Pilkis', 'Murkis', 'rainis'];
+  // const [spalva, setSpalva] = useState('blue');
+  // const [number, setNumber] = useState(1);
+  // const cats = ['Pilkis', 'Murkis', 'rainis'];
   const [kv, setKv] = useState([]);
 
-  const stebuklas = (a) => {
-    console.log('stebuklu stebuklas' + a);
-    setNumber(number + 1);
-  };
+  // const stebuklas = (a) => {
+  // console.log('stebuklu stebuklas' + a);
+  // setNumber(number + 1);
+  // };
 
-  const kitasStebuklas = () => {
-    console.log(' stebuklu stebuklas');
-    setSpalva((oldColor) => (oldColor === 'yellow' ? 'blue' : 'yellow'));
-    setSpalva('yellow');
-  };
+  // const kitasStebuklas = () => {
+  // console.log(' stebuklu stebuklas');
+  // setSpalva((oldColor) => (oldColor === 'yellow' ? 'blue' : 'yellow'));
+  // setSpalva('yellow');
+  // };
 
-  const skaicius = () => {
-    setNumber(number + 1);
-  };
+  // const skaicius = () => {
+  //   setNumber(number + 1);
+  // };
 
   const addKv = () => setKv((kvM) => [...kvM, randColor()]);
   const REMkv = () => setKv((kvM) => kvM.slice(1));
@@ -37,9 +37,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: spalva }}>State</h1>
-        <button onClick={() => stebuklas('Abra-cadabra')}>Press with!</button>
-        <button onClick={kitasStebuklas}>Press W/O</button>
+        {/* <h1 style={{ color: spalva }}>State</h1> */}
+        {/* <button onClick={() => stebuklas('Abra-cadabra')}>Press with!</button> */}
+        {/* <button onClick={kitasStebuklas}>Press W/O</button> */}
         {
           <div className="kvc">
             {kv.map((c, i) => (
@@ -50,10 +50,10 @@ function App() {
         <div className="cssround">round or not</div>
         <button onClick={addKv}>-- press---</button>
         <button onClick={REMkv}>-- remove---</button>
-        <button onClick={skaicius}>{number}</button>
-        {cats.map((cat, i) => (
-          <div key={i}>{cat}</div>
-        ))}
+        {/* <button onClick={skaicius}>{number}</button> */}
+        {/* {cats.map((cat, i) => ( */}
+        {/* <div key={i}>{cat}</div> */}
+        {/* ))} */}
 
         {/* <Hello spalva="pink" size="14" skaicius={3}></Hello>
         <Briedis></Briedis>

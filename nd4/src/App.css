@@ -36,16 +36,39 @@
     transform: rotate(360deg);
   }
 }
-.containerStyle {
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   flex-wrap: wrap;
 }
-.kvStyle {
+.kvadratas {
   width: 70px;
   height: 70px;
   background-color: blue;
   margin: 7px;
+  border-radius: 5px;
+}
+
+.redbig {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.redsmall {
+  width: 70px;
+  height: 70px;
+  background-color: red;
+  margin: 7px;
+  border-radius: 5px;
+}
+.blue {
+  width: 70px;
+  height: 70px;
+  background-color: blue;
+  margin: 7px;
+  border-radius: 5px;
 }
