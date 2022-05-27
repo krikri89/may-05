@@ -1,4 +1,4 @@
-import dogs from './data/data';
+import dogs from './Reactbaselistscomponents/data/data';
 // 3.Atvaizduoti masyvą dogs. Poriniuose indeksuose esančius šunis atvaizduoti kvadratuose, neporinius apskritime.
 
 function Numbered() {
