@@ -3,8 +3,15 @@
 <?php
 class Kibiras1
 {
-    protected $akmenuKiekis;
-    public function prideti1Akmeni(){
-        
+    private $akmenuKiekis;
+
+    public function prideti1Akmeni()
+    {
+        // echo '<br>' . $this->akmenuKiekis . '<br>';
+        echo '<br' . (++$this->akmenuKiekis) . '<br>';
+    }
+    public function pridetiDaugAkmenu(int $kiekis)
+    {
+        echo '<br>' . $this->akmenuKiekis = $kiekis . '<br>';
     }
 }
