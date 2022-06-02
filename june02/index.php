@@ -9,7 +9,7 @@ $bebras4 = clone ($bebras1);
 
 echo '<pre>';
 echo '<br>';
-// var_dump($bebras1);
+var_dump($bebras1);
 // var_dump($bebras2);
 // var_dump($bebras3);
 // var_dump($bebras4);
@@ -23,4 +23,4 @@ echo '<br>';
 
 // echo $bebras1->age;
 // $bebras1->whatIsYourAge();
-$bebras1->name = 'John';
+// $bebras1->name = 'John';
