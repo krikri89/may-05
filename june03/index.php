@@ -1,40 +1,54 @@
 <?php
 
-require __DIR__ . '/Stikline.php';
-require __DIR__ . '/Cart.php';
+use Meska\Vaikas;
 
+// spl_autoload_register(function ($class) {
+//     require __DIR__ . '/' . $class . '.php';
+// });
 
+// require __DIR__ . '/Stikline.php';
+// require __DIR__ . '/Cart.php';
+require __DIR__ . '/Senelis.php';
+require __DIR__ . '/Tevas.php';
+require __DIR__ . '/Vaikas.php';
 
-$c1 = new Cart;
-$c2 = new Cart;
+$v = new Vaikas;
+$v->betvarke();
+// $v->tvarka();
+$v->pasaka();
 
-print_r($c1);
-print_r($c2);
+$v->posakis;
 
-$s1 = new Stikline;
-$s2 = new Stikline;
-$s3 = new Stikline;
+// $c1 = new Cart;
+// $c2 = new Cart;
 
-echo '<pre>';
+// print_r($c1);
+// print_r($c2);
+
+// $s1 = new Stikline;
+// $s2 = new Stikline;
+// $s3 = new Stikline;
+
+// echo '<pre>';
 
 // print_r($s1);
 // print_r($s2);
 // print_r($s3);
-die;
-echo Stikline::$gerimas = 'Fanta';
+// die;
+// echo Stikline::$gerimas = 'Fanta';
 
-Stikline::$valio();
+// Stikline::$valio();
 
-$s2->kas();
-$s3->kas();
-//--------------
+// $s2->kas();
+// $s3->kas();
+// //--------------
 
-$c1 = Cart::create();
-$c2 = Cart::create();
+// $c1 = Cart::create();
+// $c2 = Cart::create();
 
-$c2 = clone ($c1);
-echo '<pre>';
+// $c2 = clone ($c1);
+// echo '<pre>';
 
-$c3 = unserialize(serialize($c1));
-echo '<br>';
+// $c3 = unserialize(serialize($c1));
+// echo '<br>';
 // echo json_encode($c1);
