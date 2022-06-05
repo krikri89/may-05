@@ -10,7 +10,7 @@ class Cart
         return self::$cart ?? self::$cart = new self;
     }
 
-    public function __construct()
+    private function __construct()
     {
         $this->id = rand(1000, 9999);
     }

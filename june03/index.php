@@ -8,16 +8,18 @@ use Meska\Vaikas;
 
 // require __DIR__ . '/Stikline.php';
 // require __DIR__ . '/Cart.php';
-require __DIR__ . '/Senelis.php';
-require __DIR__ . '/Tevas.php';
-require __DIR__ . '/Vaikas.php';
+// require __DIR__ . '/Senelis.php';
+// require __DIR__ . '/Tevas.php';
+// require __DIR__ . '/Vaikas.php';
+
+require __DIR__ . '/vendor/autoload.php';
 
 $v = new Vaikas;
 $v->betvarke();
 // $v->tvarka();
-$v->pasaka();
+// $v->pasaka();
 
-$v->posakis;
+// $v->posakis;
 
 // $c1 = new Cart;
 // $c2 = new Cart;

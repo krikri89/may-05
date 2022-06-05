@@ -1,0 +1,16 @@
+{
+  "name": "pirmas/blynas",
+  "description": "Eina",
+  "authors": [
+    {
+      "name": "Kristina",
+      "email": "kazkas@mail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Meska\\": ""
+    }
+  },
+  "require": {}
+}

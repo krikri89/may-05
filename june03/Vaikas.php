@@ -3,7 +3,7 @@
 namespace Meska;
 
 
-class  Vaikas extends Tevas
+class  Vaikas
 {
     public static $posakis = 'Bla bla';
 
