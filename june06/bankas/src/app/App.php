@@ -11,7 +11,6 @@ class App
         $uri = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($uri);
         self::route($uri);
-        // print_r(($_SERVER['REQUEST_URI']));
         print_r(($uri));
         echo 'Valio';
     }
