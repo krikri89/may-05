@@ -16,8 +16,6 @@ class App
         $uri = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($uri);
         self::route($uri);
-        print_r(($uri));
-        echo 'Valio';
     }
     public static function view(string $name, array $data = [])
     {
@@ -32,13 +30,16 @@ class App
     {
         $m = $_SERVER['REQUEST_METHOD'];
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === '') {
-            return (new HomeController)->form();
-        } else {
-            if ('POST' == $m && count($uri) == 1 && $uri[0] === '') {
+        if (count($uri) == 1 && $uri[0] === '') {
+            return (new HomeController)->index();
+
+            if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
+                return (new HomeController)->form();
+            }
+            if ('POST' == $m && count($uri) == 1 && $uri[0] === 'forma') {
                 return (new HomeController)->doForm();
             } else {
-                echo 'kita';
+                echo 'kita'; 
             }
         }
     }
