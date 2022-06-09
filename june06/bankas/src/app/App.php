@@ -3,11 +3,14 @@
 namespace Bankas;
 
 use Bankas\Controllers\HomeController;
+use Bankas\Controllers\LoginController;
 use Bankas\Messages;
+
 
 class App
 {
     const DOMAIN = 'bankobankas.lt';
+    const APP = __DIR__ . '/../';
     private static $html;
 
     public static function start()
@@ -35,6 +38,20 @@ class App
     {
         header('Location:http://' . self::DOMAIN . '/' . $url);
     }
+    public static function authAdd(object $user)
+    {
+        $_SESSION['auth'] = 1; //rasoma bet ka, patikrini ar yra kasnors ar ne
+        $_SESSION['auth'] = $user;
+    }
+    public static function authRem(object $user)
+    {
+        unset($_SESSION['auth'], $_SESSION['user']);
+    }
+    // public static function auth(object $user): bool
+    // {
+    // }
+
+
     private static function route(array $uri)
     {
         $m = $_SERVER['REQUEST_METHOD'];
@@ -43,6 +60,9 @@ class App
             return (new HomeController)->index();
         }
         if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
+            // if (!self::auth()) {
+            //     return self::redirect('login');
+            // }
             return (new HomeController)->form();
         }
         if ('POST' == $m && count($uri) == 1 && $uri[0] === 'forma') {
