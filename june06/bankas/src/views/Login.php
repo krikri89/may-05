@@ -9,8 +9,8 @@ require __DIR__ . '/top.php';
 
 
 <form method="post">
-    name <input type="text" name="name">
-    pass <input type="password" name="psw">
+   name <input type="text" name="name">
+   pass <input type="password" name="psw">
     <button type="submit">Login</button>
 </form>
 

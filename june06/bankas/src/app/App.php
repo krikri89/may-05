@@ -3,7 +3,8 @@
 namespace Bankas;
 
 use Bankas\Controllers\HomeController;
-use Bankas\Controllers\LoginController;
+// use Bankas\Controllers\DataController;
+// use Bankas\Controllers\LoginController;
 use Bankas\Messages;
 
 
@@ -80,20 +81,20 @@ class App
     {
         $m = $_SERVER['REQUEST_METHOD'];
 
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'login') {
-            if (self::auth()) {
-                return self::redirect();
-            }
-            return (new LoginController)->showLogin();
-        }
+        // if ('GET' == $m && count($uri) == 1 && $uri[0] === 'login') {
+        //     if (self::auth()) {
+        //         return self::redirect();
+        //     }
+        //     return (new LoginController)->showLogin();
+        // }
 
-        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'login') {
-            return (new LoginController)->doLogin();
-        }
+        // if ('POST' == $m && count($uri) == 1 && $uri[0] === 'login') {
+        //     return (new LoginController)->doLogin();
+        // }
 
-        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'logout') {
-            return (new LoginController)->doLogout();
-        }
+        // if ('POST' == $m && count($uri) == 1 && $uri[0] === 'logout') {
+        //     return (new LoginController)->doLogout();
+        // }
 
 
 
@@ -105,9 +106,9 @@ class App
             return (new HomeController)->indexJson();
         }
 
-        if ('GET' == $m && count($uri) == 2 && $uri[0] === 'get-it') {
-            return (new HomeController)->getIt($uri[1]);
-        }
+        // if ('GET' == $m && count($uri) == 2 && $uri[0] === 'get-it') {
+        //     return (new HomeController)->getIt($uri[1]);
+        // }
 
         if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma') {
             if (!self::auth()) {
@@ -120,6 +121,9 @@ class App
             return (new HomeController)->doForm();
         } else {
             echo 'kita';
+        }
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma2') {
+            return (new HomeController)->form2();
         }
     }
 }

@@ -21,26 +21,29 @@ $m = $_SERVER['REQUEST_METHOD'];
 
 if ('GET' == $m && count($uri) == 1 && $uri[0] === 'all') {
     echo '<h1>All users</h1>'; //duomenu atvaizdavimas, taip nedaryti
-    foreach ($db->showAll() as $user) {
+    foreach ($db->showAll() as $pet) {
 ?>
-        <div>
-            ID:<?= $user['id'] ?>
-            <a href="<?= URL . 'user/' . $user['id'] ?>"> NAME: <?= $user['full_name'] ?></a>
-            <a href="<?= URL . 'edit/' . $user['id'] ?>">[EDIT]</a>
-            <form action="<?= URL . 'delete/' . $user['id'] ?>" method="post">
+        <div class="list">
+            <?= $pet['id'] ?>
+            Zveris: <?= $pet['animal'] ?>
+            Svoris:<?= $pet['svoris'] ?> kg
+            <a href="<?= URL . 'edit/' . $pet['id'] ?>">[EDIT]</a>
+            <form action="<?= URL . 'delete/' . $pet['id'] ?>" method="post">
                 <button type="submit">Delete</button>
             </form>
         </div>
     <?php
     }
 }
-if ('GET' == $m && count($uri) == 2 && $uri[0] === 'user') {
-    echo '<h1>One user</h1>';
-    $user = $db->show($uri[1]);
+if ('GET' == $m && count($uri) == 2 && $uri[0] === 'pet') {
+    echo '<h1>One pet</h1>';
+    $pet = $db->show($uri[1]);
     ?>
     <div>
-        ID:<?= $user['id'] ?>
-        NAME: <?= $user['full_name'] ?>
+        <?= $pet['id'] ?>
+        Zveris: <?= $pet['animal'] ?>
+        Svoris:<?= $pet['svoris'] ?>
+
     </div>
 <?php
 }
@@ -51,24 +54,30 @@ if ('POST' == $m && count($uri) == 2 && $uri[0] === 'delete') {
 }
 if ('GET' == $m && count($uri) == 2 && $uri[0] === 'edit') {
     echo '<h1>Edit</h1>';
-    $user = $db->show($uri[1]); // user pasirinkimas 
+    $pet = $db->show($uri[1]); // pet pasirinkimas 
 
 ?>
     <div>
-        ID:<?= $user['id'] ?>
-        <form action="<?= URL . 'edit/' . $user['id'] ?>" method="post">
-            <input type="text" name="name" value="<?= $user['name'] ?>">
-            <input type="text" name="full_name" value="<?= $user['full_name'] ?>">
+        <?= $pet['id'] ?>
+        <form action="<?= URL . 'edit/' . $pet['id'] ?>" method="post">
+            Svoris <input type="text" name="svoris" value="<?= $pet['svoris'] ?>">
+            Zveris <input type="text" name="animal" value="<?= $pet['animal'] ?>" readonly>
+            animal <select name="animal" id="animal">
+                <option value="">----Choose animal----</option>
+                <option value="Avis">Avis</option>
+                <option value="Antis">Antis</option>
+                <option value="Antilope">Antilope</option>
+            </select>
             <button type="submit">Save</button>
         </form>
     </div>
 <?php
 }
 if ('POST' == $m && count($uri) == 2 && $uri[0] === 'edit') {
-    $user = $db->show($uri[1]); //paimam user senus duomenis
-    $user['name'] = $_POST['name']; // sena user pakeiciam tuo ka gaunam is post
-    $user['full_name'] = $_POST['full_name'];
-    $db->update($uri[1], $user);
+    $pet = $db->show($uri[1]); //paimam pet senus duomenis
+    $pet['svoris'] = $_POST['svoris']; // sena pet pakeiciam tuo ka gaunam is post
+    $pet['animal'] = $_POST['animal'];
+    $db->update($uri[1], $pet);
     header('Location:' . URL . 'all'); // redirectinam kur gris po edit
     die;
 }
@@ -77,18 +86,22 @@ if ('GET' == $m && count($uri) == 1 && $uri[0] === 'create') {
 
 ?>
     <form action="<?= URL . 'create' ?>" method="post">
-        name <input type="text" name="name">
-        Password <input type="text" name="psw">
-        full_name <input type="text" name="full_name">
+
+        Svoris <input type="text" name="svoris">
+        animal <select name="animal" id="animal">
+            <option value="">----Choose animal----</option>
+            <option value="Avis">Avis</option>
+            <option value="Antis">Antis</option>
+            <option value="Antilope">Antilope</option>
+        </select>
         <button type="submit">Create</button>
     </form>
 <?php
 }
 if ('POST' == $m && count($uri) == 1 && $uri[0] === 'create') {
-    $user['name'] = $_POST['name'];
-    $user['full_name'] = $_POST['full_name'];
-    $user['psw'] = md5($_POST['psw']);
-    $db->create($user);
+    $pet['svoris'] = $_POST['svoris'];
+    $pet['animal'] = $_POST['animal'];
+    $db->create($pet);
     header('Location:' . URL . 'all'); // redirectinam kur gris po create
     die;
 }

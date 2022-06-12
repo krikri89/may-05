@@ -10,11 +10,11 @@ class HomeController
 {
 
 
-    public function getIt($param)
-    {
+    // public function getIt($param)
+    // {
 
-        echo 'AAA: ' . $param;
-    }
+    //     echo 'AAA: ' . $param;
+    // }
 
 
     public function index()
@@ -55,5 +55,9 @@ class HomeController
         M::add('Puiku', 'alert');
         M::add($_POST['alabama'], 'success');
         return App::redirect('forma');
+    }
+    public function form2()
+    {
+        return App::view('form2', ['messages' => M::get()]);
     }
 }
