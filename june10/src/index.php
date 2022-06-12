@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
 <?php
 
 use App\DB\JsonDb;
@@ -20,9 +35,13 @@ $m = $_SERVER['REQUEST_METHOD'];
 // print_r($uri);
 
 if ('GET' == $m && count($uri) == 1 && $uri[0] === 'all') {
-    echo '<h1>All users</h1>'; //duomenu atvaizdavimas, taip nedaryti
-    foreach ($db->showAll() as $pet) {
 ?>
+    <a href="<?= URL . 'create/' ?>">Create new</a>
+    <?php
+    echo '<h1>List </h1>'; //duomenu atvaizdavimas, taip nedaryti
+    foreach ($db->showAll() as $pet) {
+    ?>
+        <!-- <a href="<?= URL . 'create/' ?>">New</a> -->
         <div class="list">
             <?= $pet['id'] ?>
             Zveris: <?= $pet['animal'] ?>
@@ -36,7 +55,7 @@ if ('GET' == $m && count($uri) == 1 && $uri[0] === 'all') {
     }
 }
 if ('GET' == $m && count($uri) == 2 && $uri[0] === 'pet') {
-    echo '<h1>One pet</h1>';
+    echo '<h1>Kas</h1>';
     $pet = $db->show($uri[1]);
     ?>
     <div>
@@ -82,7 +101,7 @@ if ('POST' == $m && count($uri) == 2 && $uri[0] === 'edit') {
     die;
 }
 if ('GET' == $m && count($uri) == 1 && $uri[0] === 'create') {
-    echo '<h1>Create</h1>';
+    echo '<h1>Add new</h1>';
 
 ?>
     <form action="<?= URL . 'create' ?>" method="post">
