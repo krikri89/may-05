@@ -36,7 +36,7 @@ class JsonDb implements DataBase
     {
         return $this->data;
     }
-    function show(int $id): array
+    public function show(int $id): array
     {
         foreach ($this->data as $data) {
             if ($data['id'] == $id) {
@@ -44,5 +44,23 @@ class JsonDb implements DataBase
             }
         }
         return [];
+    }
+    public function delete(int $id): void
+    {
+        foreach ($this->data as $key => $data) { //jeigu key =data, trinam abu
+            if ($data['id'] == $id) {
+                unset($this->data[$key]);
+                break; //kad nesisuktu tuscias
+            }
+        }
+    }
+    public function update(int $id, array $data): void
+    {
+        foreach ($this->data as $key => $value) { //susirandam kaip ir norint delete tik key pakeiciam i kita pavadinima kad nesimaisytu su delete methodu
+            if ($value['id'] == $id) {
+                $this->data[$key] = $data;
+                break;
+            }
+        }
     }
 }
