@@ -5,16 +5,15 @@ require __DIR__ . '/top.php';
 ?>
 
 
-<h1>Login </h1>
+<h1>Login</h1>
 
-<fieldset>
-    <legend>Enter</legend>
-    <form method="post">
-        <input type="text" name="name">
-        <input type="password" name="psw">
-        <button type="submit">Submit</button>
-    </form>
-</fieldset>
+
+<form method="post">
+    name <input type="text" name="name">
+    pass <input type="password" name="psw">
+    <button type="submit">Login</button>
+</form>
+
 
 
 

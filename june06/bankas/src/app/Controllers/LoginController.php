@@ -1,14 +1,18 @@
 <?php
 
+namespace Bankas\Controllers;
+
 use Bankas\App;
 use Bankas\Messages as M;
 
 class LoginController
 {
+
     public function showLogin()
     {
         return App::view('login', ['messages' => M::get()]);
     }
+
     public function doLogin()
     {
         $users = json_decode(file_get_contents(App::APP . 'data/users.json'));
@@ -17,20 +21,22 @@ class LoginController
                 continue;
             }
             if (md5($_POST['psw']) != $user->psw) {
-                M::add('Labai Blogai 1', 'alert');
+                M::add('Labai blogai 1', 'alert');
                 return App::redirect('login');
             } else {
-                M::add('Valio', 'success');
+                App::authAdd($user);
+                M::add('Sveikas, ' . $user->full_name, 'success');
                 return App::redirect('forma');
             }
         }
-        M::add('Labai Blogai 2', 'alert');
+        M::add('Labai blogai 2', 'alert');
         return App::redirect('login');
     }
+
     public function doLogout()
     {
         App::authRem();
-        M::add('viso', 'success');
+        M::add('AtA', 'success');
         return App::redirect('login');
     }
 }

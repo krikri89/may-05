@@ -6,4 +6,4 @@ $users = [
     ['id' => 3, 'name' => 'petras', 'psw' => md5('123'), 'full_name' => 'Peter Johnson']
 ];
 
-file_put_contents(__DIR__ . '/users.json', json_encode(($users)));
+file_put_contents(__DIR__ . '/users.json', json_encode(($users))); // seeder
