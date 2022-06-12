@@ -1,0 +1,16 @@
+{
+  "name": "app/pb",
+  "description": "interface creation",
+  "autoload": {
+    "psr-4": {
+      "App\\DB\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Kristina Rudyte",
+      "email": "rkristina32@yahoo.com"
+    }
+  ],
+  "require": {}
+}
