@@ -1,1 +1,1 @@
-[{"svoris":"99","animal":"Antilope","id":1},{"svoris":"33","animal":"Avis","id":3},{"svoris":"12","animal":"Antis","id":4},{"svoris":"2","animal":"Antis","id":5},{"svoris":"5","animal":"Avis","id":6},{"svoris":"32","animal":"Antilope","id":7}]
+{"0":{"svoris":"99","animal":"Antis","id":1},"2":{"svoris":"12","animal":"Avis","id":4},"4":{"svoris":"5","animal":"Avis","id":6},"5":{"svoris":"32","animal":"Antilope","id":7},"6":{"svoris":"2","animal":"Antis","id":8},"7":{"svoris":"100","animal":"Antilope","id":9},"8":{"svoris":"99","animal":"Antis","id":10}}

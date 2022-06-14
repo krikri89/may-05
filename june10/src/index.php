@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-</body>
-
-</html>
 <?php
 
 use App\DB\JsonDb;
@@ -41,12 +26,12 @@ if ('GET' == $m && count($uri) == 1 && $uri[0] === 'all') {
     echo '<h1>List </h1>'; //duomenu atvaizdavimas, taip nedaryti
     foreach ($db->showAll() as $pet) {
     ?>
-        <!-- <a href="<?= URL . 'create/' ?>">New</a> -->
-        <div class="list">
+
+        <div>
             <?= $pet['id'] ?>
             Zveris: <?= $pet['animal'] ?>
             Svoris:<?= $pet['svoris'] ?> kg
-            <a href="<?= URL . 'edit/' . $pet['id'] ?>">[EDIT]</a>
+            <a style="color:solid purple" href="<?= URL . 'edit/' . $pet['id'] ?>">EDIT</a>
             <form action="<?= URL . 'delete/' . $pet['id'] ?>" method="post">
                 <button type="submit">Delete</button>
             </form>
