@@ -20,14 +20,13 @@ $m = $_SERVER['REQUEST_METHOD'];
 if ($m == 'GET' && count($uri) == 1 && $uri[0] == 'animals') {
     $out = $db->showAll();
 }
-// if ($m == 'POST' && count($uri) == 1 && $uri[0] == 'animals') {
-//     $rawData = file_get_contents("php://input");
+if ($m == 'POST' && count($uri) == 1 && $uri[0] == 'animals') {
+    $rawData = file_get_contents("php://input");
 
-//     $data = json_decode($rawData, 1);
-//     $db->create($data);
-//     $out = ['msg' => 'OK, donkey'];
-// }
-
+    $data = json_decode($rawData, 1);
+    $db->create($data);
+    $out = ['msg' => 'OK, donkey'];
+}
 
 $out = json_encode($out); // issiuntimas
 
