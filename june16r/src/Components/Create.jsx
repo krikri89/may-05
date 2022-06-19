@@ -1,17 +1,11 @@
-// import logo from './logo.svg';
-import './bootstrap.css';
-import './App.css';
-
 function Create() {
   return (
-    <div classname="container">
-      <div classname="row">
-        <div classname="col-5">
-          <div class="card">
-            <div class="card-header">Create</div>
-            <div class="card-body"></div>
-          </div>
+    <div className="col-5">
+      <div className="card mt-4">
+        <div className="card-header">
+          <h2>Create</h2>
         </div>
+        <div className="card-body"></div>
       </div>
     </div>
   );

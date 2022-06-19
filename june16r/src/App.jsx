@@ -1,16 +1,14 @@
-// import logo from './logo.svg';
-import './bootstrap.css';
 import './App.css';
+import './bootstrap.css';
 import Create from './Components/Create';
 import List from './Components/List';
 
 function App() {
   return (
-    <div classname="container">
-      <div classname="row">
+    <div className="container">
+      <div className="row">
         <Create />
         <List />
-        <div classname="col-5">Create</div>
       </div>
     </div>
   );
