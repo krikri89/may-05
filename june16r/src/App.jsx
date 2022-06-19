@@ -9,6 +9,7 @@ import axios from 'axios';
 
 function App() {
   const [animals, setAnimals] = useState([]);
+  const [createAnimal, setCreateAnimal] = useState(null);
 
   useEffect(() => {
     axios
@@ -16,8 +17,23 @@ function App() {
       .then((res) => setAnimals(res.data));
   }, []);
 
+  useEffect(() => {
+    if (null === createAnimal) return; //jeigu nieko nera, nieko negrazinti
+    axios
+      .post(
+        'http://localhost/vienaragiai/may-05/june16server/animals',
+        createAnimal
+      )
+      .then((res) => setAnimals(res.data));
+  }, [createAnimal]);
+
   return (
-    <DataContext.Provider value={{ animals }}>
+    <DataContext.Provider
+      value={{
+        animals,
+        setCreateAnimal,
+      }}
+    >
       <div className="container">
         <div className="row">
           <Create />
