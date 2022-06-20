@@ -63,6 +63,7 @@ class JsonDB
     {
         foreach ($this->data as $key => $value) {
             if ($value['id'] == $id) {
+                $data['id'] = $id; // apsauga, kad nauji duomenys neperrasytu to id
                 $this->data[$key] = $data;
                 break;
             }
