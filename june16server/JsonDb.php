@@ -53,6 +53,7 @@ class JsonDB
         foreach ($this->data as $key => $data) {
             if ($data['id'] == $id) {
                 unset($this->data[$key]);
+                $this->data =  array_values($this->data);
                 break;
             }
         }

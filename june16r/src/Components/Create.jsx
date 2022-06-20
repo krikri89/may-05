@@ -9,8 +9,8 @@ function Create() {
   const [weight, setWeight] = useState('');
 
   const create = () => {
-    setCreateAnimal({ animal, weight }); // paspaudus mygtuka statas sumeta info
-    setAnimal(''); // cleanes up
+    setCreateAnimal({ animal, weight });
+    setAnimal('');
     setWeight('');
   };
 
@@ -26,28 +26,28 @@ function Create() {
             <input
               type="text"
               className="form-control"
-              value={animal} // jeigu pasikeici areiksme ja irasyti naujai su target
+              value={animal}
               onChange={(e) => setAnimal(e.target.value)}
             />
             <small className="form-text text-muted">
-              Please enter some nice animal(small donkey etc.)
+              Please enter some nice animal (small donkey etc.).
             </small>
           </div>
           <div className="form-group">
-            <label>Animal Weight</label>
+            <label>Animal weight</label>
             <input
               type="text"
               className="form-control"
-              value={weight} // jeigu pasikeici areiksme ja irasyti naujai su target
+              value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />
             <small className="form-text text-muted">
-              How much is the fish(Scooter)
+              How much is the fish (Scooter).
             </small>
           </div>
           <button
             type="button"
-            className="btn btn-outline-info"
+            className="btn btn-outline-success"
             onClick={create}
           >
             Create

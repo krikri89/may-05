@@ -5,7 +5,7 @@ require __DIR__ . '/JsonDb.php';
 
 $db = new JsonDb('farm');
 
-$animals = ['Sheep', 'Duck', 'Cow', 'Checken', 'Goat', 'Pig', 'Pink Pig', 'Horse', 'Lamb'];
+$animals = ['Sheep', 'Duck', 'Cow', 'Chicken', 'Goat', 'Pig', 'Pink Pig', 'Horse', 'Lamb'];
 
 
 foreach (range(1, 11) as $_) {
