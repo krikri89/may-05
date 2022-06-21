@@ -4,7 +4,7 @@ namespace Bankas;
 
 use Bankas\Controllers\HomeController;
 // use Bankas\Controllers\DataController;
-// use Bankas\Controllers\LoginController;
+use Bankas\Controllers\LoginController;
 use Bankas\Messages;
 
 
@@ -16,6 +16,11 @@ class App
 
     public static function start()
     {
+        header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
+        header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
+
         session_start(); // startuonam sesija
         Messages::init(); // startuojam msg
         ob_start();
@@ -38,7 +43,7 @@ class App
 
     public static function json(array $data = [])
     {
-        header('Content-Type: application/json; charset=utf-8');
+
         echo json_encode($data);
     }
 
@@ -81,20 +86,20 @@ class App
     {
         $m = $_SERVER['REQUEST_METHOD'];
 
-        // if ('GET' == $m && count($uri) == 1 && $uri[0] === 'login') {
-        //     if (self::auth()) {
-        //         return self::redirect();
-        //     }
-        //     return (new LoginController)->showLogin();
-        // }
+        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'login') {
+            if (self::auth()) {
+                return self::redirect();
+            }
+            return (new LoginController)->showLogin();
+        }
 
-        // if ('POST' == $m && count($uri) == 1 && $uri[0] === 'login') {
-        //     return (new LoginController)->doLogin();
-        // }
+        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'login') {
+            return (new LoginController)->doLogin();
+        }
 
-        // if ('POST' == $m && count($uri) == 1 && $uri[0] === 'logout') {
-        //     return (new LoginController)->doLogout();
-        // }
+        if ('POST' == $m && count($uri) == 1 && $uri[0] === 'logout') {
+            return (new LoginController)->doLogout();
+        }
 
 
 
@@ -120,10 +125,15 @@ class App
         if ('POST' == $m && count($uri) == 1 && $uri[0] === 'forma') {
             return (new HomeController)->doForm();
         } else {
-            echo 'kita';
         }
-        if ('GET' == $m && count($uri) == 1 && $uri[0] === 'forma2') {
-            return (new HomeController)->form2();
+
+        //api kelias ---------------------------------------------------
+
+        if ('GET' == $m && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'home') {
+            return (new HomeController)->indexJson();
+        }
+        if ('POST' == $m && count($uri) == 2 && $uri[0] === 'api' && $uri[1] === 'form') {
+            return (new HomeController)->formJson();
         }
     }
 }

@@ -35,11 +35,16 @@ class HomeController
         for ($i = 0; $i < 10; $i++) {
             $list[] = rand(1000, 9999);
         }
-        return App::json([
-            'title' => 'Alabama',
-            'list' => $list
-        ]);
+        return App::json($list);
     }
+
+    public function formJson()
+    {
+        $rawData = file_get_contents("php://input"); // duomenu nuskaitymas
+        $data = json_decode($rawData, 1);
+        return App::json(['msg' => 'ok, Alabama', 'youSay' => $data['alabama']]); //objektas pavadinimu alabama in form
+    }
+
 
     public function form()
     {
@@ -55,9 +60,5 @@ class HomeController
         M::add('Puiku', 'alert');
         M::add($_POST['alabama'], 'success');
         return App::redirect('forma');
-    }
-    public function form2()
-    {
-        return App::view('form2', ['messages' => M::get()]);
     }
 }
