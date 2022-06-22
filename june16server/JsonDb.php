@@ -16,6 +16,9 @@ class JsonDB
 
     public function __destruct()
     {
+        if (null === $this->data) {
+            return; // kad jeigu nera info neistrintu json data.
+        }
         file_put_contents(__DIR__ . '/data/' . $this->file . '.json', json_encode($this->data));
     }
 
