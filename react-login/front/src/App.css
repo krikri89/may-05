@@ -60,3 +60,16 @@ h1 {
   font-family: 'Courier New', Courier, monospace;
   color: pink;
 }
+
+.nice-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  padding: 10px;
+}
+
+input {
+  height: 20px;
+  font-size: 20px;
+}
