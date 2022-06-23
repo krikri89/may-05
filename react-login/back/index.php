@@ -12,7 +12,12 @@ header('Access-Control-Allow-Methods: GET, POST, DELETE, PUT');
 header("Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With");
 header('Content-Type: application/json');
 
+function getUser($token){
+$token = apache_request_headers()['Atuhorization'] ?? '';
+$db = new JsonDB('us');
+$users = $db ->showAll();
 
+}
 
 if ($_GET['url'] == 'home') {
 
