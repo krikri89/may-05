@@ -66,10 +66,13 @@ h1 {
   justify-content: space-between;
   align-items: center;
   width: 400px;
-  padding: 10px;
 }
 
-input {
+.nice-input input {
   height: 20px;
   font-size: 20px;
+}
+
+button.up {
+  margin-top: 20px;
 }

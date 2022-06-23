@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { authConfig, login } from '../Functions/auth';
 
-function Login(setRefresh) {
+function Login({ setRefresh }) {
   const [loginData, setLoginData] = useState(null);
   const [name, setName] = useState('');
   const [pass, setPass] = useState('');

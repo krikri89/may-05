@@ -10,6 +10,7 @@ function Home({ user, setRefresh }) {
     logout();
     setRefresh((r) => !r);
   };
+
   useEffect(() => {
     axios
       .get(
@@ -17,7 +18,7 @@ function Home({ user, setRefresh }) {
         authConfig()
       )
       .then((res) => setList(res.data));
-  });
+  }, []);
 
   return (
     <>
