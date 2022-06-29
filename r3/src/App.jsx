@@ -37,7 +37,7 @@ function App() {
           onChange={() => checkIt('m')}
           checked={cb.m}
         />
-        <div> Briedis</div>{' '}
+        <div> </div>{' '}
         <input
           type="checkbox"
           value="b"
