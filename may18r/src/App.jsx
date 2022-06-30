@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-// import Hello from './Components/009/Hello';
+import Hello from './Components/009/Hello';
 // import Briedis from './Components/009/Briedis';
 // import randColor from './Functions/randColors';
 
@@ -55,7 +55,7 @@ function App() {
         {/* <div key={i}>{cat}</div> */}
         {/* ))} */}
 
-        {/* <Hello spalva="pink" size="14" skaicius={3}></Hello> */}
+        <Hello spalva="pink" size="14" skaicius={3}></Hello>
         {/* <Briedis></Briedis> */}
       </header>
     </div>
