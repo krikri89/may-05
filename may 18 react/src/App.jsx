@@ -1,6 +1,6 @@
-// import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
+import Hello from './Components/009/Hello';
 // import Hello from './Components/009/Hello';
 // import Briedis from './Components/009/Briedis';
 // import Zuikis from './Components/homework/01reactbase';
@@ -37,6 +37,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Hello/>
+
+
         {/* <h1 style={{ color: spalva }}>State</h1> */}
         {/* <button onClick={() => stebuklas('Abra-cadabra')}>Press with!</button> */}
         {/* <button onClick={kitasStebuklas}>Press W/O</button> */}
