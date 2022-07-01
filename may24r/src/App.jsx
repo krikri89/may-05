@@ -14,7 +14,7 @@ function App() {
     axios
       .get('http://localhost/vienaragiai/may-05/may24priedas/') // is kur gaunam data
       .then((res) => {
-        // ka daryti su data. res=response
+        // kai gaunam rezultata => tada... res=response
         console.log(res.data); // siuo atveju tik atspausdinti data i console.
         setCats(res.data); // spausdins i narsykle
       });
