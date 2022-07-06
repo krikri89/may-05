@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Color;
 
 class SumaController extends Controller
 {
@@ -12,12 +13,28 @@ class SumaController extends Controller
 
         return view('suma', ['rezultatas' => $ab]);
     }
-    public function skirtumas()
+
+    public function skirtumas(Request $request)
     {
-        return view('post.form');
+        $colors = Color::all(); // norint atspausdint visus rez
+        
+        $rodyti = $request->session()->get('rezultatas', '');
+        
+        return view('post.form', [
+            'ro' => $rodyti,
+
+            'colors' => $colors
+        ]);
     }
-    public function skaiciuoti()
+
+    public function skaiciuoti(Request $request)
     {
-        return view('post.form');
+        $rez = $request->x - $request->y;
+        return redirect()->route('forma')->with('rezultatas', $rez);
+
+        $color = new Color; // new object
+        $color->color = $rez; // i color stulpeli irasom rez
+        $color->save();
+        dump($rez);
     }
 }
