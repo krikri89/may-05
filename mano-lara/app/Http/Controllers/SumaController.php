@@ -16,13 +16,10 @@ class SumaController extends Controller
 
     public function skirtumas(Request $request)
     {
-        $colors = Color::all(); // norint atspausdint visus rez
-        
+        $colors = Color::all();
         $rodyti = $request->session()->get('rezultatas', '');
-        
         return view('post.form', [
             'ro' => $rodyti,
-
             'colors' => $colors
         ]);
     }
@@ -30,11 +27,10 @@ class SumaController extends Controller
     public function skaiciuoti(Request $request)
     {
         $rez = $request->x - $request->y;
-        return redirect()->route('forma')->with('rezultatas', $rez);
-
-        $color = new Color; // new object
-        $color->color = $rez; // i color stulpeli irasom rez
+        $color = new Color;
+        $color->color = $rez;
         $color->save();
         dump($rez);
+        return redirect()->route('forma')->with('rezultatas', $rez);
     }
 }

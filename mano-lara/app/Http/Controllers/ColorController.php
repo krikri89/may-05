@@ -15,7 +15,8 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $colors = COlor::all();
+        return view('color');
     }
 
     /**

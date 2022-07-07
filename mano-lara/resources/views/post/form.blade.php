@@ -1,3 +1,6 @@
+@extends('main')
+
+@section('content')
 @if($ro !== '')
 <h1>REZULTATAS: {{$ro}}</h1>
 @endif
@@ -12,3 +15,8 @@ Y: <input type="text" name="y" />
     <li> {{$color->id}}: {{$color->color}}</li>
 @endforeach
 </ul>
+@endsection
+
+@section('title')
+Blabla
+@endsection
