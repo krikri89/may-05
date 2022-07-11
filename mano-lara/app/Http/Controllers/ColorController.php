@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Color;
 use Illuminate\Http\Request;
 
+use function GuzzleHttp\default_ca_bundle;
+
 class ColorController extends Controller
 {
     /**
@@ -12,11 +14,18 @@ class ColorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $colors = Color::where('id', '<', 100)->orderBy('title')->get();
+        $colors = match ($request->sort) {
+            'asc' => Color::orderBy('title', 'asc')->get(),
+            'desc' => Color::orderBy('title', 'desc')->get(),
+            default => Color::all()
+        };
+        // $colors = Color::where('id', '<', 100)->orderBy('title')->get();
 
         // $colors = Color::all()->sortBy('title');
+
+
         return view('color.index', ['colors' => $colors]);
     }
 

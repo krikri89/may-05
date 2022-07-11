@@ -1,6 +1,10 @@
 @extends('main')
 
 @section('content')
+<a href="{{route('colors-index', ['sort'=>'asc'])}}">A-Z</a>
+<a href="{{route('colors-index', ['sort'=>'desc'])}}">Z-A</a>
+<a href="{{route('colors-index')}}">Reset</a>
+
 <ul>
     @forelse($colors as $color)
     <li>
