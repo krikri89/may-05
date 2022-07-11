@@ -14,7 +14,7 @@ class ColorController extends Controller
      */
     public function index()
     {
-        $colors = Color::where('id', '>', 1)->orderBy('title')->get();
+        $colors = Color::where('id', '<', 100)->orderBy('title')->get();
 
         // $colors = Color::all()->sortBy('title');
         return view('color.index', ['colors' => $colors]);
@@ -57,6 +57,7 @@ class ColorController extends Controller
     public function show(int $colorId)
     {
         $color = Color::where('id', $colorId)->first();
+
         return view('color.show', ['color' => $color]);
     }
 
@@ -68,8 +69,6 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-
-
         return view('color.edit', ['color' => $color]);
     }
 
@@ -83,6 +82,7 @@ class ColorController extends Controller
     public function update(Request $request, Color $color)
     {
         $color->color = $request->create_color_input;
+        $color->title = $request->create_color_title ?? 'no title';
 
         $color->save();
 
@@ -99,6 +99,6 @@ class ColorController extends Controller
     {
         $color->delete();
 
-        return redirect()->route('colors-index')->with('deleted', 'color gone');
+        return redirect()->route('colors-index')->with('deleted', 'Color gone!');
     }
 }
