@@ -9,9 +9,9 @@
     <title> @yield('title')</title>
 </head>
 
-<a href="http://localhost/vienaragiai/may-05/mano-lara/public/colors/create">create new</a>
 <body>
+    @include('parts.nav')
+    @include('msg.main')
     @yield('content')
-
 </body>
 </html>
