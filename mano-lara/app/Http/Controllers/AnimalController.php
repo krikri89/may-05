@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Color;
 use App\Models\Animal;
-use App\Http\Requests\StoreAnimalRequest;
-use App\Http\Requests\UpdateAnimalRequest;
+use Illuminate\Http\Request;
 
 class AnimalController extends Controller
 {
@@ -13,9 +13,20 @@ class AnimalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // $colors = Color::all()->sortByDesc('title');
+        // $colors = Color::where('id', '<', 100)->orderBy('title')->get();
+
+        $colors = match ($request->sort) {
+            'asc' => Color::orderBy('title', 'asc')->get(),
+            'desc' => Color::orderBy('title', 'desc')->get(),
+            default => Color::all()
+        };
+
+        $animals = Animal::all();
+
+        return view('animal.index', ['animals' => $animals]);
     }
 
     /**
@@ -25,62 +36,88 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        $colors = Color::all();
+
+        return view('animal.create', ['colors' => $colors]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAnimalRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAnimalRequest $request)
+    public function store(Request $request)
     {
-        //
+        $animal = new Animal;
+
+        $animal->name = $request->animal_name;
+
+        $animal->color_id = $request->color_id;
+
+        $animal->save();
+
+        return redirect()->route('animals-index')->with('success', 'Well done!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function show(Animal $animal)
+    public function show(int $colorId)
     {
-        //
+        $color = Color::where('id', $colorId)->first();
+
+        return view('color.show', ['color' => $color]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
     public function edit(Animal $animal)
     {
-        //
+
+        $colors = Color::all();
+
+        return view('animal.edit', [
+            'animal' => $animal,
+            'colors' => $colors
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAnimalRequest  $request
-     * @param  \App\Models\Animal  $animal
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAnimalRequest $request, Animal $animal)
+    public function update(Request $request, Animal $animal)
     {
-        //
+        $animal->name = $request->animal_name;
+
+        $animal->color_id = $request->color_id;
+
+        $animal->save();
+
+        return redirect()->route('animals-index')->with('success', 'You are the best!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
     public function destroy(Animal $animal)
     {
-        //
+        $animal->delete();
+
+        return redirect()->route('animals-index')->with('deleted', 'Animal is dead :(');
     }
 }

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\factory as Faker;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,15 +18,16 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $fantasyColor = collect();
+
+        $fantasyColors = collect(['crimson', 'pink']);
 
         do {
-            $fantasyColor->push($faker->safeColorName);
-            $fantasyColor = $fantasyColor->unique();
-        } while ($fantasyColor->count() < 10);
+            $fantasyColors->push($faker->safeColorName);
+            $fantasyColors = $fantasyColors->unique();
+        } while ($fantasyColors->count() < 10);
 
-        foreach ($fantasyColor as $color) {
-            $color  = $faker->safeColorName;
+
+        foreach ($fantasyColors as $color) {
             DB::table('colors')->insert([
                 'color' => $color,
                 'title' => $color,

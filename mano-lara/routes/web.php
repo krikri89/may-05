@@ -51,4 +51,4 @@ Route::post('/animals', [A::class, 'store'])->name('animals-store');
 Route::get('/animals/edit/{animal}', [A::class, 'edit'])->name('animals-edit');
 Route::put('/animals/{animal}', [A::class, 'update'])->name('animals-update');
 Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animals-delete');
-Route::get('/animals/show/{id}', [A::class, 'show'])->name('animals-show');
+Route::get('/animals/show/', [A::class, 'show'])->name('animals-show');

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->unsignedBigInteger('color_id');
-            $table->foreign('color_id')->reference('id')->on('colors');
+            $table->foreign('color_id')->references('id')->on('colors');
             $table->timestamps();
         });
     }

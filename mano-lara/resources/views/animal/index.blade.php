@@ -1,30 +1,30 @@
 @extends('main')
 
 @section('content')
-<a href="{{route('colors-index', ['sort'=>'asc'])}}">A-Z</a>
-<a href="{{route('colors-index', ['sort'=>'desc'])}}">Z-A</a>
-<a href="{{route('colors-index')}}">Reset</a>
-
+<a href="{{route('animals-index', ['sort' => 'asc'])}}">A-Z</a>
+<a href="{{route('animals-index', ['sort' => 'desc'])}}">Z-A</a>
+<a href="{{route('animals-index')}}">Reset</a>
 <ul>
-    @forelse($colors as $color)
+    @forelse($animals as $animal)
     <li>
-        <div class="color-box" style="background:{{$color->color}};">
-            {{$color->color}}
-            <h2>{{$color->title}}</h2>
+        <div class="color-box" style="background:{{$animal->getThisAnimalsColor->color}};">
+            {{$animal->getThisAnimalsColor->title}}
+            <h2>{{$animal->name}}</h2>
         </div>
+
         <div class="controls">
-            <a href="{{route('colors-show', $color->id)}}">SHOW</a>
-            <a href="{{route('colors-edit', $color)}}">EDIT</a>
-            
-            <form class="delete" action="{{route('colors-delete', $color)}}" method="post">
+            <a href="{{route('animals-show', $animal->id)}}">SHOW</a>
+            <a href="{{route('animals-edit', $animal)}}">EDIT</a>
+            <form class="delete" action="{{route('animals-delete', $animal)}}" method="post">
                 @csrf
                 @method('delete')
-                <button type="submit">Destroy</button>
+                <button type="submit">Remove from the list</button>
             </form>
         </div>
     </li>
     @empty
-    <li>No colors, no life.</li>
+    <li>No animals, no life.</li>
     @endforelse
 </ul>
+
 @endsection
