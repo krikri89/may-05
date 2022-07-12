@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnimalController as A;
+use App\Http\Controllers\ForestController as F;
 use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
 
@@ -24,9 +25,9 @@ Route::get('/', function () {
 
 Route::get('/bebras', fn () => 'Valio, bebrams');
 
-Route::get('/barsukas', [A::class, 'barsukas']);
+Route::get('/barsukas', [F::class, 'barsukas']);
 
-Route::get('/briedis/{id}', [A::class, 'briedis']);
+Route::get('/briedis/{id}', [F::class, 'briedis']);
 
 Route::get('/suma/{s1?}/{s2?}', [S::class, 'suma']);
 
@@ -40,5 +41,14 @@ Route::post('/colors', [C::class, 'store'])->name('colors-store');
 Route::get('/colors/edit/{color}', [C::class, 'edit'])->name('colors-edit');
 Route::put('/colors/{color}', [C::class, 'update'])->name('colors-update');
 Route::delete('/colors/{color}', [C::class, 'destroy'])->name('colors-delete');
+Route::get('/colors/show/', [C::class, 'show'])->name('colors-show');
 
-Route::get('/colors/show', [C::class, 'show'])->name('colors-show');
+// Animals
+
+Route::get('/animals', [A::class, 'index'])->name('animals-index');
+Route::get('/animals/create', [A::class, 'create'])->name('animals-create');
+Route::post('/animals', [A::class, 'store'])->name('animals-store');
+Route::get('/animals/edit/{animal}', [A::class, 'edit'])->name('animals-edit');
+Route::put('/animals/{animal}', [A::class, 'update'])->name('animals-update');
+Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animals-delete');
+Route::get('/animals/show/{id}', [A::class, 'show'])->name('animals-show');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Color;
 use Illuminate\Http\Request;
 
-use function GuzzleHttp\default_ca_bundle;
 
 class ColorController extends Controller
 {

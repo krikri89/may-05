@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Faker\factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +16,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $faker = Faker::create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $fantasyColor = collect();
+
+        do {
+            $fantasyColor->push($faker->safeColorName);
+            $fantasyColor = $fantasyColor->unique();
+        } while ($fantasyColor->count() < 10);
+
+        foreach ($fantasyColor as $color) {
+            $color  = $faker->safeColorName;
+            DB::table('colors')->insert([
+                'color' => $color,
+                'title' => $color,
+            ]);
+        }
     }
 }
