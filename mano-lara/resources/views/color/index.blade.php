@@ -1,4 +1,6 @@
+{{-- @extends('layouts.app') --}}
 @extends('main')
+
 
 @section('content')
 <a href="{{route('colors-index', ['sort'=>'asc'])}}">A-Z</a>
@@ -15,7 +17,7 @@
         <div class="controls">
             <a href="{{route('colors-show', $color->id)}}">SHOW</a>
             <a href="{{route('colors-edit', $color)}}">EDIT</a>
-            
+
             <form class="delete" action="{{route('colors-delete', $color)}}" method="post">
                 @csrf
                 @method('delete')

@@ -5,7 +5,8 @@
         <input type="text" name="animal_name" value="{{$animal->name}}" />
         <select name="color_id">
             @foreach($colors as $color)
-            <option value="{{$color->id}}">{{$color->title}}</option>
+            <option value="{{$color->id}}" @if($color->id == $animal->color_id)selected @endif>{{$color->title}}</option>
+
             @endforeach
         </select>
 
