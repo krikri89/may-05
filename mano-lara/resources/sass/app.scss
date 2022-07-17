@@ -1,14 +1,49 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
-
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
-
+body {
+    font-family: "Edu TAS Beginner", cursive;
+}
 .list-group-item {
     .controls {
         display: flex;
+    }
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+        padding: 0 7px;
+        color: solid blue;
+        transition: all 0.3s;
+        &:hover {
+            color: pink;
+        }
+    }
+}
+.color-bin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .color-box {
+        padding: 20px;
+        width: 250px;
+        height: 50px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h2 {
+            margin: 10px;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            text-shadow: 1px 2px white;
+            color: black;
+        }
     }
 }
