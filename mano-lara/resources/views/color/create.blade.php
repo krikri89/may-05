@@ -1,4 +1,5 @@
-@extends('main')
+@extends('layouts.app')
+
 @section('content')
 <ul>
     <h1>Create</h1>

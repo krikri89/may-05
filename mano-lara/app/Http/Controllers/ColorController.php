@@ -111,6 +111,6 @@ class ColorController extends Controller
             return redirect()->route('colors-index')->with('deleted', 'COlor gone');
         }
 
-        return redirect()->route('colors-index')->with('deleted', 'not possible');
+        return redirect()->back()->with('deleted', 'not possible');
     }
 }

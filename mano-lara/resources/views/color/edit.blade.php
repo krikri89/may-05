@@ -1,4 +1,5 @@
-@extends('main')
+@extends('layouts.app')
+
 @section('content')
 <ul>
     <form action="{{route('colors-update', $color)}}" method="post">

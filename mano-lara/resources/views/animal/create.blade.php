@@ -1,4 +1,5 @@
-@extends('main')
+@extends('layouts.app')
+
 
 @section('content')
 <h1>New Animal </h1>

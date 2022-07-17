@@ -1,4 +1,5 @@
-@extends('main')
+@extends('layouts.app')
+
 
 @section('content')
 <ul>
@@ -7,6 +8,9 @@
             {{$color->color}}
             <h2>{{$color->title}}</h2>
         </div>
+
+
+
         <div class="controls">
             <a href="{{route('colors-edit', $color)}}">EDIT</a>
             <form class="delete" action="{{route('colors-delete', $color)}}" method="post">

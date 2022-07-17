@@ -41,7 +41,7 @@ Route::post('/colors', [C::class, 'store'])->name('colors-store');
 Route::get('/colors/edit/{color}', [C::class, 'edit'])->name('colors-edit');
 Route::put('/colors/{color}', [C::class, 'update'])->name('colors-update');
 Route::delete('/colors/{color}', [C::class, 'destroy'])->name('colors-delete');
-Route::get('/colors/show/{id}', [C::class, 'show'])->name('colors-show');
+Route::get('/colors/show/', [C::class, 'show'])->name('colors-show');
 
 // Animals
 
@@ -51,7 +51,7 @@ Route::post('/animals', [A::class, 'store'])->name('animals-store');
 Route::get('/animals/edit/{animal}', [A::class, 'edit'])->name('animals-edit');
 Route::put('/animals/{animal}', [A::class, 'update'])->name('animals-update');
 Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animals-delete');
-Route::get('/animals/show/{id}', [A::class, 'show'])->name('animals-show');
+Route::get('/animals/show/', [A::class, 'show'])->name('animals-show');
 
 // Auth::routes();
 
