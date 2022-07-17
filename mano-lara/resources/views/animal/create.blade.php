@@ -13,7 +13,9 @@
         </select>
 
         @csrf
-        <button type="submit">I found Animal!</button>
+        <button class="btn btn-outline-success m-2" type="submit">I found Animal!</button>
+
+
     </form>
 </ul>
 @endsection

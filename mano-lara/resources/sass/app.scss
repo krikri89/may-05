@@ -6,3 +6,9 @@
 
 // Bootstrap
 @import "bootstrap/scss/bootstrap";
+
+.list-group-item {
+    .controls {
+        display: flex;
+    }
+}

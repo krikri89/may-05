@@ -8,7 +8,9 @@
         <input type="color" name="create_color_input" value="{{$color->color}}" />
         @csrf
         @method('put')
-        <button type="submit">Ja, this is a new color</button>
+        <button class="btn btn-outline-success m-2" type="submit">Ja, this is a new color</button>
+
+
     </form>
 </ul>
 @endsection

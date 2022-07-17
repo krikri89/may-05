@@ -13,7 +13,8 @@
 
         @csrf
         @method('put')
-        <button type="submit">Update</button>
+        <button class="btn btn-outline-success m-2" type="submit">Update</button>
+
     </form>
 </ul>
 @endsection

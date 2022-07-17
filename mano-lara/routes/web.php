@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimalController as A;
 use App\Http\Controllers\ForestController as F;
 use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -53,6 +54,6 @@ Route::put('/animals/{animal}', [A::class, 'update'])->name('animals-update');
 Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animals-delete');
 Route::get('/animals/show/', [A::class, 'show'])->name('animals-show');
 
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
