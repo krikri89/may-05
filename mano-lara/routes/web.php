@@ -37,13 +37,13 @@ Route::post('/skirtumas', [S::class, 'skaiciuoti'])->name('skaiciuokle');
 
 ///Colors
 Route::prefix('colors')->group(function () {
-    Route::get('', [C::class, 'index'])->name('colors-index');
-    Route::get('create', [C::class, 'create'])->name('colors-create');
-    Route::post('', [C::class, 'store'])->name('colors-store');
-    Route::get('edit/{color}', [C::class, 'edit'])->name('colors-edit');
-    Route::put('{color}', [C::class, 'update'])->name('colors-update');
-    Route::delete('{color}', [C::class, 'destroy'])->name('colors-delete');
-    Route::get('show/{id}', [C::class, 'show'])->name('colors-show');
+    Route::get('', [C::class, 'index'])->name('colors-index')->middleware('roleblade:user');
+    Route::get('create', [C::class, 'create'])->name('colors-create')->middleware('roleblade:admin');
+    Route::post('', [C::class, 'store'])->name('colors-store')->middleware('roleblade:admin');
+    Route::get('edit/{color}', [C::class, 'edit'])->name('colors-edit')->middleware('roleblade:admin');
+    Route::put('{color}', [C::class, 'update'])->name('colors-update')->middleware('roleblade:admin');
+    Route::delete('{color}', [C::class, 'destroy'])->name('colors-delete')->middleware('roleblade:admin');
+    Route::get('show/{id}', [C::class, 'show'])->name('colors-show')->middleware('roleblade:user');
 });
 // Animals
 
