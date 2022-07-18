@@ -5,6 +5,7 @@ use App\Http\Controllers\AnimalController as A;
 use App\Http\Controllers\ForestController as F;
 use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
+use App\Http\Controllers\FrontController as Fr;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -19,31 +20,37 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
+//Front
+Route::get('', [Fr::class, 'index'])->name('front-index');
 
-Route::get('/bebras', fn () => 'Valio, bebrams');
 
-Route::get('/barsukas', [F::class, 'barsukas']);
+// Route::get('/bebras', fn () => 'Valio, bebrams');
 
-Route::get('/briedis/{id}', [F::class, 'briedis']);
+// Route::get('/barsukas', [F::class, 'barsukas']);
 
-Route::get('/suma/{s1?}/{s2?}', [S::class, 'suma']);
+// Route::get('/briedis/{id}', [F::class, 'briedis']);
 
-Route::get('/skirtumas', [S::class, 'skirtumas'])->name('forma');
-Route::post('/skirtumas', [S::class, 'skaiciuoti'])->name('skaiciuokle');
+// Route::get('/suma/{s1?}/{s2?}', [S::class, 'suma']);
+
+// Route::get('/skirtumas', [S::class, 'skirtumas'])->name('forma');
+// Route::post('/skirtumas', [S::class, 'skaiciuoti'])->name('skaiciuokle');
+
+
+
 
 ///Colors
-Route::prefix('colors')->group(function () {
-    Route::get('', [C::class, 'index'])->name('colors-index')->middleware('roleblade:user');
-    Route::get('create', [C::class, 'create'])->name('colors-create')->middleware('roleblade:admin');
-    Route::post('', [C::class, 'store'])->name('colors-store')->middleware('roleblade:admin');
-    Route::get('edit/{color}', [C::class, 'edit'])->name('colors-edit')->middleware('roleblade:admin');
-    Route::put('{color}', [C::class, 'update'])->name('colors-update')->middleware('roleblade:admin');
-    Route::delete('{color}', [C::class, 'destroy'])->name('colors-delete')->middleware('roleblade:admin');
-    Route::get('show/{id}', [C::class, 'show'])->name('colors-show')->middleware('roleblade:user');
+Route::prefix('colors')->name('colors-')->group(function () {
+    Route::get('', [C::class, 'index'])->name('index')->middleware('roleblade:user');
+    Route::get('create', [C::class, 'create'])->name('create')->middleware('roleblade:admin');
+    Route::post('', [C::class, 'store'])->name('store')->middleware('roleblade:admin');
+    Route::get('edit/{color}', [C::class, 'edit'])->name('edit')->middleware('roleblade:admin');
+    Route::put('{color}', [C::class, 'update'])->name('update')->middleware('roleblade:admin');
+    Route::delete('{color}', [C::class, 'destroy'])->name('delete')->middleware('roleblade:admin');
+    Route::get('show/{id}', [C::class, 'show'])->name('show')->middleware('roleblade:user');
 });
 // Animals
 
