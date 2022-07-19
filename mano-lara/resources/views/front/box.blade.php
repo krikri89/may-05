@@ -17,7 +17,6 @@
                                 <option value="animal-desc" @if($sort=='animal-desc' )selected @endif>Animal Z-A</option>
                             </select>
                         </div>
-                        <button class="btn btn-outline-warning mt-2" type="submit">Sort</button>
                     </div>
                     <div class="col-3">
                         <div class="form-group">
@@ -30,17 +29,30 @@
                                 @endforeach
                             </select>
                         </div>
-                        <button class="btn btn-outline-success mt-2" type="submit">Filter</button>
-                    </div>
-                    <div class="col-4">
-
 
                     </div>
-                    <div class="col-1">
-                        <a class="btn btn-outline-primary mt-2" href="{{route('front-index')}}">Clear</a>
+
+                    <div class="col-6">
+                        <button class="btn btn-outline-warning m-2 mt-4" type="submit">Sort</button>
+                        <a class="btn btn-outline-primary m-2 mt-4" href="{{route('front-index')}}">Clear</a>
                     </div>
                 </div>
             </div>
         </form>
+        <form class="delete" action="{{route('front-index')}}" method="get">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group mt-4">
+                            <label>Search</label>
+                            <input class="form-control" type="text" name="s" value="{{$s}}"/>
+                        </div>
+                        <button class="btn btn-outline-success mt-2" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
     </div>
 </div>
