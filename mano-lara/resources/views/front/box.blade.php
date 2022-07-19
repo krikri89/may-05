@@ -23,8 +23,10 @@
                         <div class="form-group">
                             <label>What color?</label>
                             <select class="form-control" name="color_id">
+                                <option value="0" @if($filter==0) selected @endif>No filter</option>
                                 @foreach($colors as $color)
-                                <option value="{{$color->id}}">{{$color->title}}</option>
+                                <option value="{{$color->id}}" @if($filter==$color->id) selected @endif>{{$color->title}}</option>
+
                                 @endforeach
                             </select>
                         </div>
