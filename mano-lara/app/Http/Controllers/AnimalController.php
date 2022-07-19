@@ -15,6 +15,9 @@ class AnimalController extends Controller
      */
     public function index(Request $request)
     {
+        $animals = Animal::all();
+
+        return view('animal.index', ['animals' => $animals]);
         // $colors = Color::all()->sortByDesc('title');
         // $colors = Color::where('id', '<', 100)->orderBy('title')->get();
 
@@ -24,9 +27,6 @@ class AnimalController extends Controller
             default => Color::all()
         };
 
-        $animals = Animal::all();
-
-        return view('animal.index', ['animals' => $animals]);
     }
 
     /**
