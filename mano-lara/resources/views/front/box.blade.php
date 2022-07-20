@@ -45,7 +45,7 @@
                     <div class="col-12">
                         <div class="form-group mt-4">
                             <label>Search</label>
-                            <input class="form-control" type="text" name="s" value="{{$s}}"/>
+                            <input class="form-control" type="text" name="s" value="{{$s}}" />
                         </div>
                         <button class="btn btn-outline-success mt-2" type="submit">Search</button>
                     </div>

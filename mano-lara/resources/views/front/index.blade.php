@@ -6,6 +6,7 @@
         <div class="col-md-8">
             @include('front.box')
             <div class="card">
+                @include('front.pager')
                 <div class="card-header">My fantastic Zoo</div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -22,7 +23,6 @@
                                     <button type="submit" class="btn btn-outline-warning m-2">Want it!</button>
                                 </form>
                             </div>
-
                         </li>
                         @empty
                         <li class="list-group-item">No animals, no life.</li>
@@ -31,6 +31,7 @@
 
 
                 </div>
+                @include('front.pager')
             </div>
         </div>
     </div>
