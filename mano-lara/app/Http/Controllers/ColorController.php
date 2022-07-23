@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Color;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 
 class ColorController extends Controller
@@ -47,10 +49,26 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'color_title' => ['required', 'min:3', 'max:64'],
+                'create_color_input' => ['required', 'regex:/^\#([0-9A-f]){6}$/i'],
+            ],
+            [
+                'color_title.min' => 'Too short',
+                'color_title.required' => 'Come onnn..., need to fill it'
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $color = new Color;
 
         $color->color = $request->create_color_input;
-        $color->title = $request->create_color_title ?? 'no title';
+        $color->title = $request->color_title;
 
         $color->save();
 
@@ -90,6 +108,23 @@ class ColorController extends Controller
      */
     public function update(Request $request, Color $color)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'color_title' => ['required', 'min:3', 'max:64'],
+                'create_color_input' => ['required', 'regex:/^\#([0-9A-f]){6}$/i'],
+            ],
+            [
+                'color_title.min' => 'Too short',
+                'color_title.required' => 'Come onnn..., need to fill it'
+            ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
+
         $color->color = $request->create_color_input;
         $color->title = $request->create_color_title ?? 'no title';
 
@@ -109,7 +144,7 @@ class ColorController extends Controller
         if (!$color->animals->count()) {
 
             $color->delete();
-            return redirect()->route('colors-index')->with('deleted', 'COlor gone');
+            return redirect()->route('colors-index')->with('deleted', 'Color gone');
         }
 
         return redirect()->back()->with('deleted', 'not possible');

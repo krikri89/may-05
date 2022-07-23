@@ -13,10 +13,13 @@
                     <ul>
                         <form action="{{route('colors-update', $color)}}" method="post">
                             <div class="form-group">
-                                <input class="form-control" type="text" name="create_color_title" value="{{$color->title}}" />
+                                <input class="form-control" type="text" name="create_color_title" value="{{old('color_title', $color->title)}}" />
+
+
                             </div>
                             <div class="form-group">
-                                <input class="form-control" type="color" name="create_color_input" value="{{$color->color}}" />
+                                <input class="form-control" type="color" name="create_color_input" value="{{old('create_color_input'),$color->color}}" />
+
                             </div>
                             @csrf
                             @method('put')
