@@ -6,6 +6,7 @@ use App\Http\Controllers\ForestController as F;
 use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
 use App\Http\Controllers\FrontController as Fr;
+use App\Http\Controllers\CartController as Cart;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,6 +27,7 @@ Route::get('/welcome', function () {
 
 //Front
 Route::get('', [Fr::class, 'index'])->name('front-index');
+Route::post('add-animal-to-the-cart', [Cart::class, 'add'])->name('front-add');
 
 
 // Route::get('/bebras', fn () => 'Valio, bebrams');

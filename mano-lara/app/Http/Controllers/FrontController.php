@@ -8,6 +8,7 @@ use App\Models\Color;
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\URL;
 
+
 class FrontController extends Controller
 {
 
