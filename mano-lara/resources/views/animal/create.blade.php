@@ -8,7 +8,8 @@
                     <h1>Animal Create</h1>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('animals-store')}}" method="post">
+                    <form action="{{route('animals-store')}}" method="post" enctype="multipart/form-data">
+
                         <div class="form-group">
                             <label>Animal name</label>
                             <input class="form-control" type="text" name="animal_name" />
@@ -21,6 +22,11 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input class="form-control" type="file" name="animal_photo" />
+                        </div>
+
                         @csrf
                         @method('post')
                         <button class="btn btn-outline-success mt-4" type="submit">I found Animal!</button>

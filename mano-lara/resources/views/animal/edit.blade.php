@@ -11,6 +11,12 @@
                     <form action="{{route('animals-update', $animal)}}" method="post">
                         <div class="form-group">
                             <label>Animal name</label>
+                               </div>
+                               @if($animal->photo)
+                               <div class="image-box">
+                                   <img src="{{$animal->photo}}">
+                               </div>
+
                             <input class="form-control" type="text" name="animal_name" value="{{$animal->name}}" />
                         </div>
                         <div class="form-group">

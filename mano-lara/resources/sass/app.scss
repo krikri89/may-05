@@ -23,6 +23,7 @@ body {
 }
 form {
     display: flex;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -75,4 +76,9 @@ h1.nice {
     color: black;
     letter-spacing: 12px;
     font-size: 40px;
+}
+
+.image-box {
+    width: 150px;
+    height: auto;
 }

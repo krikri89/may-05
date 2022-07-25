@@ -24,6 +24,11 @@
                             <div class="color-box" style="background:{{$animal->getThisAnimalsColor->color}};">
                                 {{-- {{$animal->getThisAnimalsColor->title}} --}}
                                 <h2>{{$animal->name}}</h2>
+
+                            </div>
+                            @if($animal->photo)
+                            <div class="image-box">
+                                <img src="{{$animal->photo}}">
                             </div>
 
                             <div class="controls">

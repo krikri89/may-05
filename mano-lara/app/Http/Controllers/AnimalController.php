@@ -26,7 +26,6 @@ class AnimalController extends Controller
             'desc' => Color::orderBy('title', 'desc')->get(),
             default => Color::all()
         };
-
     }
 
     /**
@@ -50,6 +49,17 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         $animal = new Animal;
+        // dd($request->file('animal_photo'));
+        if ($request - file('animal_photo')) {
+
+            $photo = $request->file('animal_photo');
+            $extension = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name . '-' . rand(100000, 9999999) . '.' . $extension;
+            $photo->move(public_path() . '/images', $file);
+            $animal->photo = asset('/images') . '/' . $file;
+            // dd(public_path() . '/images');
+        }
 
         $animal->name = $request->animal_name;
 
