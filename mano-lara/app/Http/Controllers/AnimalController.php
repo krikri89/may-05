@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Color;
 use App\Models\Animal;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class AnimalController extends Controller
 {
@@ -55,7 +56,14 @@ class AnimalController extends Controller
             $extension = $photo->getClientOriginalExtension(); // kadangi gaunam object, pasiimam extension, tan kad galetume padaryti linka
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME); //originalus vardas w/o extension. kad eitu prideti extension kuriant nauja varda
             $file = $name . '-' . rand(100000, 999999) . '.' . $extension; // generuojam file varda. Del saugumo ji pervadiname. orgin name + bruksnys + rand number + taskas + origin extend
-            $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
+
+            $Image = Image::make($photo)->greyscale();
+
+            // $Image->save($originalPath . time() . $photo->getClientOriginalName());
+
+            $Image->move(public_path() . '/images', $file);
+
+            // $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
             $animal->photo = asset('/images') . '/' . $file; // i DB photo dali lenteleje
 
         }
@@ -110,6 +118,16 @@ class AnimalController extends Controller
     {
         if ($request->file('animal_photo')) { // jeigu file yra
 
+            // istrinam is DB
+            $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+            $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+            $path = asset('/images') . '/' . $name . '.' . $extension;
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+            // idedam nauja
+
             $photo = $request->file('animal_photo');
             $extension = $photo->getClientOriginalExtension(); // kadangi gaunam object, pasiimam extension, tan kad galetume padaryti linka
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME); //originalus vardas w/o extension. kad eitu prideti extension kuriant nauja varda
@@ -135,6 +153,16 @@ class AnimalController extends Controller
      */
     public function destroy(Animal $animal)
     {
+        // istrinam is DB
+        if ($animal->photo) {
+            $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+            $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+            $path = asset('/images') . '/' . $name . '.' . $extension;
+
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $animal->delete();
 
         return redirect()->route('animals-index')->with('deleted', 'Animal is dead :(');

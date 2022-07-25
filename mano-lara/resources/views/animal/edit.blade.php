@@ -8,7 +8,8 @@
                     <h1>Animal Edit</h1>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('animals-update', $animal)}}" method="post">
+                    <form action="{{route('animals-update', $animal)}}" method="post" enctype="multipart/form-data">
+
                         <div class="form-group">
                             <label>Animal name</label>
                         </div>
