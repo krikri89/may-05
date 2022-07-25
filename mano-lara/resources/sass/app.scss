@@ -79,6 +79,9 @@ h1.nice {
 }
 
 .image-box {
-    width: 150px;
-    height: auto;
+    margin: 10px;
+    img {
+        width: 150px;
+        height: auto;
+    }
 }

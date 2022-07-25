@@ -49,16 +49,15 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         $animal = new Animal;
-        // dd($request->file('animal_photo'));
-        if ($request - file('animal_photo')) {
+        if ($request->file('animal_photo')) { // jeigu file yra
 
             $photo = $request->file('animal_photo');
-            $extension = $photo->getClientOriginalExtension();
-            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-            $file = $name . '-' . rand(100000, 9999999) . '.' . $extension;
-            $photo->move(public_path() . '/images', $file);
-            $animal->photo = asset('/images') . '/' . $file;
-            // dd(public_path() . '/images');
+            $extension = $photo->getClientOriginalExtension(); // kadangi gaunam object, pasiimam extension, tan kad galetume padaryti linka
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME); //originalus vardas w/o extension. kad eitu prideti extension kuriant nauja varda
+            $file = $name . '-' . rand(100000, 999999) . '.' . $extension; // generuojam file varda. Del saugumo ji pervadiname. orgin name + bruksnys + rand number + taskas + origin extend
+            $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
+            $animal->photo = asset('/images') . '/' . $file; // i DB photo dali lenteleje
+
         }
 
         $animal->name = $request->animal_name;
@@ -109,6 +108,16 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
+        if ($request->file('animal_photo')) { // jeigu file yra
+
+            $photo = $request->file('animal_photo');
+            $extension = $photo->getClientOriginalExtension(); // kadangi gaunam object, pasiimam extension, tan kad galetume padaryti linka
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME); //originalus vardas w/o extension. kad eitu prideti extension kuriant nauja varda
+            $file = $name . '-' . rand(100000, 999999) . '.' . $extension; // generuojam file varda. Del saugumo ji pervadiname. orgin name + bruksnys + rand number + taskas + origin extend
+            $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
+            $animal->photo = asset('/images') . '/' . $file; // i DB photo dali lenteleje
+
+        }
         $animal->name = $request->animal_name;
 
         $animal->color_id = $request->color_id;
@@ -129,5 +138,22 @@ class AnimalController extends Controller
         $animal->delete();
 
         return redirect()->route('animals-index')->with('deleted', 'Animal is dead :(');
+    }
+    public function deletePic(Animal $animal)
+    {
+        // istrinam is DB
+        $name = pathinfo($animal->photo, PATHINFO_FILENAME);
+        $extension = pathinfo($animal->photo, PATHINFO_EXTENSION);
+        $path = asset('/images') . '/' . $name . '.' . $extension;
+
+        if (file_exists($path)) {
+            unlink($path);
+        }
+        //istrinam is musu filo
+        $animal->photo = null; // pic padarom null
+        $animal->save();
+
+
+        return redirect()->back()->with('deleted', 'No more pics');
     }
 }
