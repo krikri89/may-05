@@ -56,7 +56,6 @@
                         @else
 
 
-                        @if(Auth::user()->role > 9)
 
 
                         <li class="nav-item dropdown">
@@ -67,9 +66,14 @@
                                 <a class="dropdown-item" href="{{ route('colors-index') }}">
                                     List of Colors
                                 </a>
+                                @if(Auth::user()->role > 9)
+
+
                                 <a class="dropdown-item" href="{{ route('colors-create') }}">
                                     Add a new color </a>
+                                @endif
                             </div>
+
                         </li>
 
                         <li class="nav-item dropdown">
@@ -80,11 +84,38 @@
                                 <a class="dropdown-item" href="{{ route('animals-index') }}">
                                     List of animals
                                 </a>
+                                @if(Auth::user()->role > 9)
+
+
                                 <a class="dropdown-item" href="{{ route('animals-create') }}">
                                     Add a new animal </a>
+                                @endif
+                            </div>
+                        </li> @if(Auth::user()->role > 9)
+
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Orders
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('orders-index') }}">
+                                    List of orders
+                                </a>
+
+                                {{-- <a class="dropdown-item" href="{{ route('animals-create') }}">
+                                Add a new order </a> --}}
+                                @endif
                             </div>
                         </li>
-                        @endif
+
+                        <li class="nav-item">
+                            <a class="dropdown-item" href="{{ route('my-order') }}">
+
+
+                                User order </a>
+
+                        </li>
 
 
                         <li class="nav-item dropdown">

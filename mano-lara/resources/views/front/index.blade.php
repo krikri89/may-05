@@ -17,7 +17,10 @@
                                 <h2>{{$animal->name}}</h2>
                             </div>
                             <div class="controls">
-                                <form class="delete" action="{{route('front-add')}}" method="post">
+                                @if(Auth::user()?->role > 0)
+
+
+                                <form class="delete form" action="{{route('front-add')}}" method="post">
 
                                     @csrf
                                     @method('post')
@@ -29,16 +32,12 @@
                                             <div class="col-2">
                                                 <input class="form-control m-2" type="number" style="width:60px;" name="animals_count" />
                                             </div>
-                                            <input type="hidden" value="{{$animal->id}}" name="animal_id">
+                                            <input type="hidden" value="{{$animal->aid}}" name="animal_id">
                                         </div>
                                     </div>
-
-
                                 </form>
-
-
                             </div>
-
+                            @endif
                         </li>
                         @empty
                         <li class="list-group-item">No animals, no life.</li>

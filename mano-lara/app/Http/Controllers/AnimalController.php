@@ -57,13 +57,13 @@ class AnimalController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME); //originalus vardas w/o extension. kad eitu prideti extension kuriant nauja varda
             $file = $name . '-' . rand(100000, 999999) . '.' . $extension; // generuojam file varda. Del saugumo ji pervadiname. orgin name + bruksnys + rand number + taskas + origin extend
 
-            $Image = Image::make($photo)->greyscale();
+            // $Image = Image::make($photo)->greyscale();
 
             // $Image->save($originalPath . time() . $photo->getClientOriginalName());
 
-            $Image->move(public_path() . '/images', $file);
+            // $Image->move(public_path() . '/images', $file);
 
-            // $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
+            $photo->move(public_path() . '/images', $file); // kur norim ideti sia photo. su pavadinimu kuri sukuriam su $file
             $animal->photo = asset('/images') . '/' . $file; // i DB photo dali lenteleje
 
         }

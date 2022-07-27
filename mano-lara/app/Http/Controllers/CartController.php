@@ -10,8 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function index(Request $request)
+    {
+        $orders = Cart::orderBy('id', 'desc')->get();
+
+        return view('adminOrders.index', ['orders' => $orders]);
+    }
     public function add(Request $request)
     {
+
+
         // dd($request->all());
 
         $cart = new Cart;
@@ -20,5 +28,12 @@ class CartController extends Controller
         $cart->user_id = Auth::user()->id;
 
         $cart->save();
+        return redirect()->route('my-order');
+    }
+    public function showMyOrder()
+    {
+        $orders = Cart::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+
+        return view('front.orders', ['orders' => $orders]);
     }
 }

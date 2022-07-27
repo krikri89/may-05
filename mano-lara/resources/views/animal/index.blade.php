@@ -35,17 +35,16 @@
                             <div class="controls">
                                 <a class="btn btn-outline-secondary m-2" href="{{route('animals-show', $animal->id)}}">Show</a>
 
+                                @if(Auth::user()?->role > 9)
+
 
                                 <a class="btn btn-outline-primary m-2" href="{{route('animals-edit', $animal)}}">Edit</a>
-
-
                                 <form class="delete" action="{{route('animals-delete', $animal)}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-outline-danger m-2" type="submit">Remove</button>
-
-
                                 </form>
+                                @endif
                             </div>
                         </div>
                     </li>

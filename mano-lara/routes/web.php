@@ -21,14 +21,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-//Front
-Route::get('', [Fr::class, 'index'])->name('front-index');
-Route::post('add-animal-to-the-cart', [Cart::class, 'add'])->name('front-add');
-
 
 // Route::get('/bebras', fn () => 'Valio, bebrams');
 
@@ -42,6 +34,19 @@ Route::post('add-animal-to-the-cart', [Cart::class, 'add'])->name('front-add');
 // Route::post('/skirtumas', [S::class, 'skaiciuoti'])->name('skaiciuokle');
 
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+//Front
+Route::get('', [Fr::class, 'index'])->name('front-index');
+Route::post('add-animal-to-the-cart', [Cart::class, 'add'])->name('front-add');
+Route::get('my-order', [Cart::class, 'showMyOrder'])->name('my-order');
+
+//Orders:
+Route::prefix('orders')->name('orders-')->group(function () {
+    Route::get('', [Cart::class, 'index'])->name('index')->middleware('roleblade:admin');
+});
 
 
 ///Colors
