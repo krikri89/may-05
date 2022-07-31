@@ -46,6 +46,7 @@ Route::get('my-order', [Cart::class, 'showMyOrder'])->name('my-order');
 //Orders:
 Route::prefix('orders')->name('orders-')->group(function () {
     Route::get('', [Cart::class, 'index'])->name('index')->middleware('roleblade:admin');
+    Route::put('status/{order}', [Cart::class, 'setStatus'])->name('status')->middleware('roleblade:admin');
 });
 
 

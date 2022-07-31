@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -14,8 +15,20 @@ class CartController extends Controller
     {
         $orders = Cart::orderBy('id', 'desc')->get();
 
-        return view('adminOrders.index', ['orders' => $orders]);
+        return view('adminOrders.index', [
+            'orders' => $orders,
+            'statuses' => Cart::STATUSES
+
+        ]);
     }
+
+    public function setStatus(Request $request, Cart $order)
+    {
+        $order->status = $request->status;
+        $order->save();
+        return redirect()->back();
+    }
+
     public function add(Request $request)
     {
 
@@ -34,6 +47,20 @@ class CartController extends Controller
     {
         $orders = Cart::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
 
-        return view('front.orders', ['orders' => $orders]);
+        $orders = $orders->map(function ($o) {
+
+            $time = Carbon::create($o->created_at)->setTimezone('Europe / Vilnius'); //is created at padarytas carbon object, kuri paskui galima pasidaryti skirtingu formatu
+            // $time->addDays(7)->addHours();
+            // $time->next('Monday')->addHour('12');
+
+            $o->time = $time->format('Y-m-d H:i');
+            return $o;
+        });
+
+
+        return view('front.orders', [
+            'orders' => $orders,
+            'statuses' => Cart::STATUSES
+        ]);
     }
 }

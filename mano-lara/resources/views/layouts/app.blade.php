@@ -91,7 +91,18 @@
                                     Add a new animal </a>
                                 @endif
                             </div>
-                        </li> @if(Auth::user()->role > 9)
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                My orders
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href=" {{ route('my-order') }}">
+                                    View </a>
+                            </div>
+                        </li>
+                        @if(Auth::user()->role > 9)
 
 
                         <li class="nav-item dropdown">
@@ -103,19 +114,11 @@
                                     List of orders
                                 </a>
 
-                                {{-- <a class="dropdown-item" href="{{ route('animals-create') }}">
-                                Add a new order </a> --}}
+
                                 @endif
                             </div>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="{{ route('my-order') }}">
-
-
-                                User order </a>
-
-                        </li>
 
 
                         <li class="nav-item dropdown">
