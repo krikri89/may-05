@@ -49,7 +49,7 @@ class CartController extends Controller
 
         $orders = $orders->map(function ($o) {
 
-            $time = Carbon::create($o->created_at)->setTimezone('Europe / Vilnius'); //is created at padarytas carbon object, kuri paskui galima pasidaryti skirtingu formatu
+            $time = Carbon::create($o->created_at); //is created at padarytas carbon object, kuri paskui galima pasidaryti skirtingu formatu
             // $time->addDays(7)->addHours();
             // $time->next('Monday')->addHour('12');
 

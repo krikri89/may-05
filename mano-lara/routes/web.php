@@ -7,7 +7,9 @@ use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
 use App\Http\Controllers\FrontController as Fr;
 use App\Http\Controllers\CartController as Cart;
+use App\Http\ontrollers\ShopCartController as Shop;
 use Illuminate\Support\Facades\Auth;
+
 
 
 /*
@@ -40,8 +42,12 @@ Route::get('/welcome', function () {
 
 //Front
 Route::get('', [Fr::class, 'index'])->name('front-index');
-Route::post('add-animal-to-the-cart', [Cart::class, 'add'])->name('front-add');
+Route::post('add-animal-to-order', [Cart::class, 'add'])->name('front-add');
 Route::get('my-order', [Cart::class, 'showMyOrder'])->name('my-order');
+Route::post('add-animal-to-the-cart', [Shop::class, 'add'])->name('front-add-cart');
+Route::get('my-small-cart', [Shop::class, 'showSmallCart'])->name('my-small-cart');
+Route::delete('my-small-cart', [Shop::class, 'deleteSmallCart'])->name('my-small-cart');
+
 
 //Orders:
 Route::prefix('orders')->name('orders-')->group(function () {
@@ -60,7 +66,7 @@ Route::prefix('colors')->name('colors-')->group(function () {
     Route::delete('{color}', [C::class, 'destroy'])->name('delete')->middleware('roleblade:admin');
     Route::get('show/{id}', [C::class, 'show'])->name('show')->middleware('roleblade:user');
     Route::get('show', [C::class, 'link'])->name('show-route'); // apsidarom linko dali kuri su JS bus galima modifikuoti.
-}); 
+});
 // Animals
 
 Route::get('/animals', [A::class, 'index'])->name('animals-index');
