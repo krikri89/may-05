@@ -149,4 +149,9 @@ class ColorController extends Controller
 
         return redirect()->back()->with('deleted', 'not possible');
     }
+
+    public function link()
+    {
+        abort(403);
+    }
 }

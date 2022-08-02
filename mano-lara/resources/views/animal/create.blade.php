@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -21,6 +22,12 @@
                                 <option value="{{$color->id}}">{{$color->title}}</option>
                                 @endforeach
                             </select>
+                            <div class="m-2">
+                                <a class="magic--link" href="">
+                                    see <span></span>
+                                </a>
+
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Image</label>
@@ -36,4 +43,6 @@
         </div>
     </div>
 </div>
+
+
 @endsection

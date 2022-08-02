@@ -59,7 +59,8 @@ Route::prefix('colors')->name('colors-')->group(function () {
     Route::put('{color}', [C::class, 'update'])->name('update')->middleware('roleblade:admin');
     Route::delete('{color}', [C::class, 'destroy'])->name('delete')->middleware('roleblade:admin');
     Route::get('show/{id}', [C::class, 'show'])->name('show')->middleware('roleblade:user');
-});
+    Route::get('show', [C::class, 'link'])->name('show-route'); // apsidarom linko dali kuri su JS bus galima modifikuoti.
+}); 
 // Animals
 
 Route::get('/animals', [A::class, 'index'])->name('animals-index');

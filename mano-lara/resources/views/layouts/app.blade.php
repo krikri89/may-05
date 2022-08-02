@@ -8,6 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <script>
+        const showUrl = "{{route('colors-show-route')}}"; //linko dalis kuri sukurem per route
+
+    </script>
+
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
