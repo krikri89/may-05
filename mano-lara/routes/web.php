@@ -7,7 +7,7 @@ use App\Http\Controllers\SumaController as S;
 use App\Http\Controllers\ColorController as C;
 use App\Http\Controllers\FrontController as Fr;
 use App\Http\Controllers\CartController as Cart;
-use App\Http\ontrollers\ShopCartController as Shop;
+use App\Http\Controllers\ShopCartController as Shop;
 use Illuminate\Support\Facades\Auth;
 
 
