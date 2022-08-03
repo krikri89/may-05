@@ -47,6 +47,7 @@ Route::get('my-order', [Cart::class, 'showMyOrder'])->name('my-order');
 Route::post('add-animal-to-the-cart', [Shop::class, 'add'])->name('front-add-cart');
 Route::get('my-small-cart', [Shop::class, 'showSmallCart'])->name('my-small-cart');
 Route::delete('my-small-cart', [Shop::class, 'deleteSmallCart'])->name('my-small-cart');
+//linkas tas pats bet method kitoks. 
 
 
 //Orders:

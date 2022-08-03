@@ -17,24 +17,19 @@ class ShopCartController extends Controller
         $cart = session()->get('cart', []); // pasiemam cart
 
         //paskaiciuojam tuos pacius items vienas prie kito 
-        switch (1) {
-            case 1:
+        switch (1) { //ateinam is witch ir gaunam 1. 
+            case 1: // tikrinam ar tirkai gaunam 1, o kadangi visada vienetas, tai prasuks foreach.
                 foreach ($cart as &$item) {
                     if ($item['id'] == $id) { // jeigu randamas id jau yra tai prideti prie esamu
                         $item['count'] += $count;
-                        break 2; // break 2 levels 
+                        break 2; // break 2 levels 1as break nubreakins foreach ir iseis is jo, o 2as iseis is swithco, todel nepateks i default. 
                     }
                 }
             default:
-                $cart[] = ['id' => $id, 'count' => $count]; //i cart dedam
-
+                $cart[] = ['id' => $id, 'count' => $count];
         }
 
-
-
         session()->put('cart', $cart);
-
-
 
         return response()->json([
             'msg' => 'Nieko nesuprantu'
@@ -70,9 +65,19 @@ class ShopCartController extends Controller
             'html' => $html
         ]);
     }
-    public function deleteSmallCart()
+    public function deleteSmallCart(Request $request)
     {
-        session()->put('cart', []);
+
+        $cart = session()->get('cart', []);
+        $id = (int) $request->id;
+
+        foreach ($cart as $key => $item) { //reikia foreach kad session neistrintu visko kiekviena karta kai padarom page refresh 
+            if ($id == $item['id']) { //jeigu item = id
+                unset($cart[$key]); // ji istrinam
+                break;
+            }
+        }
+        session()->put('cart', $cart);
 
         return response()->json([
             'msg' => 'Durnas ats'

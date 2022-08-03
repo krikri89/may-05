@@ -2,10 +2,38 @@ import * as bootstrap from "bootstrap";
 import axios from "axios";
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-window.addEventListener("load", () => {
+const cartDelete = () => {
+    document
+        .querySelectorAll(".delete--cart--item") //paimam class prie el kuri norim trinti
+        .forEach((button) => {
+            //surastus el suforeach ir imam button
+            button.addEventListener("click", () => {
+                //ant jo uzdedam event = click
+                const id = button.dataset.itemId; // kai ji paspaudziam paimam to button id (paimam is data-item-id be bruksneliu tokiu budu gaunam {$animal->id})
+                axios
+                    .delete(mySmallCart + "?id=" + id) //axios kelias kuris eina i cart prilipina prie jo ? ir paima id
+                    .then((_) => {
+                        cartUpdate();
+                    });
+            });
+        });
+};
+
+//step 2
+
+const cartUpdate = () => {
+    //
     axios.get(mySmallCart).then((res) => {
-        document.querySelector(".small--cart").innerHTML = res.data.html;
+        // kreipiames i serveri, gaunam html pagal tuo metu existuojancia session
+        document.querySelector(".small--cart").innerHTML = res.data.html; //ir ta html insertinam i jai priskirta vieta. Html neturi jokiu event. Ant jo mygtukai neveikia.
+        cartDelete(); //uzloadina deleta kuris pereina per visa doka ir sudelioja visus eventus, ka turi daryti kiekvienas mygtukas. Kiekvienas mygtukas kreipiasi i serveri ir jam pasako ka delete. kai gaunam ats is serverio dar karta kviecia cartupdate, kuris update html ir update mygtuka.
     });
+};
+
+//step 1
+window.addEventListener("load", () => {
+    // uzloadina psl,kviecia cartupdate.
+    cartUpdate();
 });
 
 if (document.querySelector(".magic--link")) {
@@ -46,7 +74,9 @@ if (document.querySelector(".add--cart")) {
 
                 axios
                     .post(addToCartUrl, { count, animalId }) //ir siunciam
-                    .then((res) => console.log(res.data));
+                    .then((res) => {
+                        cartUpdate();
+                    });
             });
             // console.log(button.closest(".row")); //suranda artimiausia teva. To siekiam norint issiuti info irasyta tame hidden type input. Realiai ieskom kur tie imput yra padeti.
         });
