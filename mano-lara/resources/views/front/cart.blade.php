@@ -15,9 +15,19 @@
         </span>
 
         @empty
-        Your cart is empty.
+        <span class="dropdown-item">
+            Your cart is empty.
+        </span>
         @endforelse
+        @if($cart)
+        <span class="dropdown-item">
+            <form action="{{route('front-add')}}" method="post">
 
+                <button type="submit" class="btn btn-outline-warning m-2 ">buy it</button>
+                @csrf
+            </form>
+        </span>
+        @endif
     </div>
 
 </li>

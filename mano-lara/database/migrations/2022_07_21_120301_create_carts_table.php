@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('animal_id');
-            $table->foreign('animal_id')->references('id')->on('animals');
+            // $table->unsignedBigInteger('animal_id');
+            // $table->foreign('animal_id')->references('id')->on('animals');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedTinyInteger('count');
+            // $table->unsignedTinyInteger('count');
+            $table->text('order'); // cart masyvas paverciam i Json string ir idedam cia
             $table->unsignedTinyInteger('status')->default(1);
             $table->timestamps();
         });
