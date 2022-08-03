@@ -24,7 +24,12 @@
             <form action="{{route('front-add')}}" method="post">
 
                 <button type="submit" class="btn btn-outline-warning m-2 ">buy it</button>
+
                 @csrf
+                {{-- <div class="col-3">
+                    <a class="btn btn-outline-success m-2 " href="{{route('orders-pdf', $cart)}}">Get PDF</a>
+
+                </div> --}}
             </form>
         </span>
         @endif

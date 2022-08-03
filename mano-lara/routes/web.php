@@ -54,6 +54,7 @@ Route::delete('my-small-cart', [Shop::class, 'deleteSmallCart'])->name('my-small
 Route::prefix('orders')->name('orders-')->group(function () {
     Route::get('', [Cart::class, 'index'])->name('index')->middleware('roleblade:admin');
     Route::put('status/{order}', [Cart::class, 'setStatus'])->name('status')->middleware('roleblade:admin');
+    // Route::get('/pdf/{order}', [Cart::class, 'getPdf'])->name('pdf');
 });
 
 

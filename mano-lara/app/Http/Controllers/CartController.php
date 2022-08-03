@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateCartRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CartController extends Controller
 {
@@ -95,4 +96,18 @@ class CartController extends Controller
             'statuses' => Cart::STATUSES
         ]);
     }
+    // public function getPdf(Cart $order)
+    // {
+    //     $cart = json_decode($order->order, 1); //gaunam orderi, to orderio cart 
+    //     $ids = array_map(fn ($product) => $product['id'], $cart); // geting ids
+    //     $cartCollection = collect([...$cart]); //kiekvienas cart gauna animal collection. KAdangi jis jau sujungtas su color, todel galioja visi  
+
+    //     $order->animals = Animal::whereIn('id', $ids)->get()->map(function ($a) use ($cartCollection) {
+    //         $a->count = $cartCollection->first(fn ($el) => $el['id'] == $a->id)['count'];
+    //         return $a;
+    //     });
+    //     $pdf = Pdf::loadView('front.pdf', ['cart' => $order]);
+    //     return $pdf->download('order-' . $order->id . '.pdf');
+    //     // pdf pavadinimas
+    // }
 }
