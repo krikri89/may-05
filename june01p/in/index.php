@@ -11,8 +11,14 @@ $uri = explode('/', $uri);
 // echo $_SERVER['REQUEST_URI'];
 
 // print_r(($_SERVER));
-
+/* */
 //Router
+
+$array = [2 => 0, 4 => 1, 1 => 2, 5 => 3];
+$newArray = [];
+foreach ($array as $key => $element) {
+    $newArray[$element] = $key;
+}
 
 if (count($uri) == 2) {
     if ($uri[0] == 'kambarys') {

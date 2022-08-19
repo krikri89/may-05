@@ -8,6 +8,7 @@ use App\Http\Controllers\ColorController as C;
 use App\Http\Controllers\FrontController as Fr;
 use App\Http\Controllers\CartController as Cart;
 use App\Http\Controllers\ShopCartController as Shop;
+use App\Http\Controllers\MasterController as M;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -79,6 +80,18 @@ Route::put('/animals/{animal}', [A::class, 'update'])->name('animals-update');
 Route::delete('/animals/{animal}', [A::class, 'destroy'])->name('animals-delete');
 Route::get('/animals/show/{id}', [A::class, 'show'])->name('animals-show');
 Route::put('/animals/delete-pic/{animal}', [A::class, 'deletePic'])->name('animals-delete-pic');
+
+// MAster
+Route::prefix('masters')->name('masters-')->group(
+    function () {
+        Route::get('', [M::class, 'index'])->name('index')->middleware('roleblade:admin');;
+        Route::get('/add/{master}', [M::class, 'add'])->name('add');
+        Route::delete('/{master}', [M::class, 'destroy'])->name('delete')->middleware('roleblade:admin');;
+        Route::put('/{master}', [M::class, 'update'])->name('update');
+        // Route::post('', [M::class, 'store'])->name('store');
+        // Route::get('/create', [M::class, 'create'])->name('create');
+    }
+);
 
 Auth::routes();
 

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create('lt_LT');
         $fantasyColors = collect(['crimson', 'pink']);
 
         do {
@@ -38,6 +38,19 @@ class DatabaseSeeder extends Seeder
             DB::table('animals')->insert([
                 'name' => $animals[rand(0, count($animals) - 1)],
                 'color_id' => rand(1, 10),
+            ]);
+        }
+
+        foreach (range(1, 9) as $_) {
+            DB::table('masters')->insert([
+                'master_name' => $faker->name,
+            ]);
+        }
+        $skills = ['Dance', 'Massage', 'Polish', 'Clean dishes', 'Bake', 'Make sleep', 'Role a dice', 'Make cocktail', 'Drive'];
+
+        foreach ($skills as $skill) {
+            DB::table('skills')->insert([
+                'skill' => $skill,
             ]);
         }
 
